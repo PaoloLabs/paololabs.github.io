@@ -59,47 +59,36 @@
 
   <!-- Navbar -->
   <nav class="bg-gray-800 shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-white text-2xl font-bold">HR Analytics</a>
-      <ul class="hidden md:flex space-x-2">
-        <li><a href="#section1"
-            class="text-gray-300 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md transition duration-300">1.
-            Problema</a></li>
-        <li><a href="#section2"
-            class="text-gray-300 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md transition duration-300">2.
-            Técnica</a></li>
-        <li><a href="#section3"
-            class="text-gray-300 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md transition duration-300">3.
-            Competitors</a></li>
-        <li><a href="#section4"
-            class="text-gray-300 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md transition duration-300">4.
-            Comparison</a></li>
-        <li><a href="#section5"
-            class="text-gray-300 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md transition duration-300">5.
-            Conclusions</a></li>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="text-white text-2xl font-bold whitespace-nowrap">
+        HR Analytics
+      </a>
+
+      <!-- Menú principal -->
+      <ul class="hidden md:flex space-x-6 text-sm font-medium">
+        <li><a href="#section1" class="text-gray-300 hover:text-green-400 transition">1. Problema</a></li>
+        <li><a href="#section2" class="text-gray-300 hover:text-green-400 transition">2. Técnica</a></li>
+        <li><a href="#section3" class="text-gray-300 hover:text-green-400 transition">3. Competitors</a></li>
+        <li><a href="#section4" class="text-gray-300 hover:text-green-400 transition">4. Comparison</a></li>
+        <li><a href="#section5" class="text-gray-300 hover:text-green-400 transition">5. Conclusions</a></li>
       </ul>
+
+      <!-- Botón hamburguesa -->
       <button id="hamburgerToggle" class="md:hidden text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
-    <div id="navMenu" class="hidden md:hidden bg-gray-800">
-      <a href="#section1"
-        class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition duration-300">1.
-        Problema</a>
-      <a href="#section2"
-        class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition duration-300">2.
-        Técnica</a>
-      <a href="#section3"
-        class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition duration-300">3.
-        Competitors</a>
-      <a href="#section4"
-        class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition duration-300">4.
-        Comparison</a>
-      <a href="#section5"
-        class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition duration-300">5.
-        Conclusions</a>
+
+    <!-- Menú desplegable móvil -->
+    <div id="navMenu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
+      <a href="#section1" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3">1. Problema</a>
+      <a href="#section2" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3">2. Técnica</a>
+      <a href="#section3" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3">3. Competitors</a>
+      <a href="#section4" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3">4. Comparison</a>
+      <a href="#section5" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3">5. Conclusions</a>
     </div>
   </nav>
 
