@@ -1,0 +1,118 @@
+<section id="section2-tecnica" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h2 class="text-3xl font-bold text-green-500 mb-5 border-b border-gray-700 pb-3">
+        Sección 2: Determinación de la Técnica Analítica
+    </h2>
+
+    <h3 class="text-2xl font-semibold text-white mb-3">
+        1. Justificación de la Técnica Seleccionada
+    </h3>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Dado que la variable objetivo <strong>rotación de empleados</strong> (<code>Attrition</code>)
+        es de naturaleza <strong>categórica binaria</strong> —indicando si un empleado
+        <em>permanece</em> o <em>abandona</em> la organización—, se requiere una técnica de
+        <strong>modelamiento supervisado de clasificación</strong> que permita estimar la
+        probabilidad de ocurrencia de un evento.
+    </p>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Entre las alternativas posibles (árboles de decisión, <i>Random Forest</i>, <i>Support Vector Machines</i>),
+        se selecciona la <strong>Regresión Logística</strong> como modelo principal por las siguientes razones:
+    </p>
+
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li><strong>Interpretabilidad:</strong> permite cuantificar el efecto de cada variable independiente
+            sobre la probabilidad de rotación mediante los coeficientes <i>β</i>, expresables como <i>odds ratios</i>.
+        </li>
+        <li><strong>Compatibilidad estadística:</strong> cumple los supuestos de independencia y linealidad
+            entre los predictores y la log-odds del evento, adecuados para las variables del dataset.</li>
+        <li><strong>Eficiencia computacional:</strong> requiere menos recursos de entrenamiento en comparación
+            con modelos no lineales más complejos, facilitando la validación cruzada.</li>
+        <li><strong>Aplicabilidad práctica:</strong> los resultados pueden ser interpretados por
+            analistas y gestores de talento humano sin necesidad de conocimientos avanzados de IA.</li>
+    </ul>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        Este modelo servirá como punto de partida (<i>baseline</i>) para comparar su desempeño con
+        modelos más complejos en la siguiente fase, donde se aplicarán técnicas competidoras
+        como <i>Random Forest</i> y <i>XGBoost</i>.
+    </p>
+
+</section>
+
+<section id="section2-funcion" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        2. Representación Matemática del Modelo
+    </h3>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        La <strong>Regresión Logística Binaria</strong> modela la relación entre una variable dependiente
+        categórica (<code>Attrition</code>) y un conjunto de variables independientes explicativas,
+        estimando la <strong>probabilidad de ocurrencia</strong> de un evento (renuncia del empleado).
+    </p>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        La función logística o sigmoide transforma la combinación lineal de las variables predictoras
+        en una probabilidad comprendida entre 0 y 1:
+    </p>
+
+    <!-- Ajuste global para evitar saltos de línea en fórmulas MathJax -->
+    <style>
+        mjx-container[jax="SVG"] {
+            display: inline !important;
+            vertical-align: middle !important;
+        }
+    </style>
+
+    <div class="bg-gray-900 p-4 rounded-md text-gray-300 text-center text-lg mb-4 shadow-inner">
+        $$ P(Attrition = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n)}} $$
+    </div>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Donde:
+    </p>
+
+    <div
+        class="border-l-4 border-green-400 bg-gray-900/50 p-4 rounded-r-lg text-gray-300 text-base space-y-2 shadow-inner">
+        <p><strong>\(P(Attrition = 1)\)</strong> — probabilidad de que un empleado abandone la organización.</p>
+        <p><strong>\(\beta_0\)</strong> — término independiente o constante del modelo.</p>
+        <p><strong>\(\beta_i\)</strong> — coeficiente asociado a cada variable predictora \(X_i\), que representa su
+            influencia en la probabilidad de rotación.</p>
+        <p><strong>\(e\)</strong> — base del logaritmo natural.</p>
+    </div>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        La ecuación lineal interna del modelo se expresa como:
+    </p>
+
+    <div class="bg-gray-900 p-4 rounded-md text-gray-300 text-center text-lg mb-4 shadow-inner">
+        $$ logit(P) = ln\left(\frac{P}{1 - P}\right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n $$
+    </div>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        En este caso, la función logit permite interpretar los coeficientes del modelo en términos de
+        <strong>odds ratios</strong>, donde un valor positivo de \( \beta_i \) indica un aumento en la probabilidad
+        de rotación, mientras que un valor negativo sugiere un efecto protector o de permanencia.
+    </p>
+
+</section>
+
+<p class="text-lg mt-6 text-gray-300 leading-relaxed">
+    Antes de aplicar el modelo de <strong>Regresión Logística</strong>, se realizó un
+    <strong>análisis exploratorio de datos (EDA)</strong> sobre el conjunto
+    <code>HREmployee_data.csv</code> con el propósito de comprender la estructura y
+    calidad de la información, identificar posibles valores atípicos y evaluar la
+    distribución de las variables más relevantes.
+    Esta etapa permitió visualizar patrones iniciales de comportamiento entre la
+    <em>rotación de empleados</em> (<code>Attrition</code>) y factores como la
+    <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>),
+    <strong>trabajo en horas extras</strong> (<code>OverTime</code>) y
+    <strong>años en la empresa</strong> (<code>YearsAtCompany</code>),
+    así como otras dimensiones relacionadas con el desempeño
+    (<code>PerformanceRating</code>) y el equilibrio vida–trabajo
+    (<code>WorkLifeBalance</code>).
+    Los resultados de esta exploración inicial sirvieron para confirmar las hipótesis
+    planteadas y establecer una base empírica sólida para el modelamiento estadístico posterior.
+</p>

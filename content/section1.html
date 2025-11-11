@@ -1,0 +1,299 @@
+<section id="section1-contexto" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        1. Contexto del Problema
+    </h3>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        A nivel organizacional, la <strong>rotación de empleados</strong> (<i>attrition</i>) se ha convertido en uno de
+        los
+        principales desafíos de gestión del talento en las empresas modernas. De acuerdo con estudios recientes en
+        <i>People Analytics</i>, reemplazar a un trabajador puede costar entre el <strong>50% y el 200%</strong> de su
+        salario anual,
+        considerando gastos de reclutamiento, capacitación y pérdida temporal de productividad (Deloitte, 2023).
+    </p>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        En la actualidad, las organizaciones buscan adoptar un enfoque <strong>basado en datos</strong> para entender
+        las causas
+        detrás de la rotación, identificar patrones tempranos de riesgo y fortalecer la retención del talento clave.
+        Variables como la <strong>satisfacción laboral, el balance vida-trabajo, el reconocimiento y las oportunidades
+            de crecimiento</strong>
+        influyen directamente en la decisión de un empleado de permanecer o abandonar una empresa (Kumar & Mathimaran,
+        2017; Velasco, 2024).
+    </p>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Sin embargo, las decisiones en el área de Recursos Humanos suelen apoyarse en criterios subjetivos o en
+        mediciones aisladas, lo que impide una comprensión integral del fenómeno. El uso de <strong>modelos estadísticos
+            y de
+            machine learning supervisado</strong> permite analizar múltiples variables simultáneamente y estimar la
+        probabilidad de rotación
+        de manera cuantitativa, mejorando la objetividad y la capacidad predictiva de las estrategias de retención.
+    </p>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        En este contexto, el presente proyecto propone analizar un conjunto de datos de empleados, aplicando técnicas
+        de modelamiento predictivo para determinar <strong>qué factores explican con mayor peso la probabilidad de
+            renuncia</strong>,
+        con el fin de aportar evidencia empírica a la toma de decisiones estratégicas en gestión del talento humano.
+    </p>
+
+</section>
+
+<section id="section1-pregunta" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        2. Pregunta de Investigación
+    </h3>
+
+    <p class="text-lg mb-4 italic text-gray-400 leading-relaxed">
+        “¿En qué medida factores como la <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>), el
+        <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) y el
+        <strong>desempeño</strong> (<code>PerformanceRating</code>) influyen en la
+        probabilidad de rotación (<code>Attrition</code>) de los empleados dentro de la organización?”
+    </p>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Esta pregunta busca identificar las relaciones más relevantes entre variables laborales,
+        demográficas y de satisfacción, con el fin de comprender las causas subyacentes del abandono
+        de personal. El análisis pretende transformar un problema de gestión del talento en un
+        <strong>reto analítico medible</strong>, utilizando información disponible en el conjunto de datos de empleados.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables consideradas</h4>
+
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li><strong>Variable objetivo:</strong> <code>Attrition</code> — Estado del empleado (permanece / renuncia /
+            desvinculado).</li>
+        <li><strong>Variables demográficas:</strong> Edad (<code>Age</code>), género (<code>Gender</code>),
+            estado civil (<code>MaritalStatus</code>), nivel educativo (<code>Education</code>) y campo de estudio
+            (<code>EducationField</code>).</li>
+        <li><strong>Variables laborales:</strong> Departamento (<code>Department</code>), rol (<code>JobRole</code>),
+            años en la empresa (<code>YearsAtCompany</code>), nivel de trabajo (<code>JobLevel</code>), horas extras
+            (<code>OverTime</code>),
+            número de promociones (<code>YearsSinceLastPromotion</code>) y distancia desde el hogar
+            (<code>DistanceFromHome</code>).</li>
+        <li><strong>Variables de satisfacción y desempeño:</strong> Satisfacción laboral (<code>JobSatisfaction</code>),
+            involucramiento (<code>JobInvolvement</code>), evaluación de desempeño (<code>PerformanceRating</code>),
+            satisfacción con el entorno (<code>EnvironmentSatisfaction</code>) y equilibrio trabajo–vida
+            (<code>WorkLifeBalance</code>).</li>
+        <li><strong>Variables económicas:</strong> Ingreso mensual (<code>MonthlyIncome</code>), aumento salarial
+            porcentual (<code>PercentSalaryHike</code>),
+            y nivel de participación accionaria (<code>StockOptionLevel</code>).</li>
+    </ul>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        Con base en estas dimensiones, se espera obtener evidencia empírica sobre los factores que
+        influyen en la rotación de empleados y establecer una base sólida para el modelamiento
+        predictivo que se desarrollará en las siguientes secciones.
+    </p>
+
+</section>
+
+<section id="section1-objetivo" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        3. Objetivo Analítico (SMART)
+    </h3>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Specific (Específico)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Evaluar la relación entre la <strong>rotación de empleados</strong> (<code>Attrition</code>) y un conjunto de
+        variables
+        demográficas (<code>Age</code>, <code>Gender</code>, <code>MaritalStatus</code>), laborales
+        (<code>Department</code>, <code>JobRole</code>, <code>YearsAtCompany</code>, <code>OverTime</code>),
+        de satisfacción (<code>JobSatisfaction</code>, <code>WorkLifeBalance</code>) y desempeño
+        (<code>PerformanceRating</code>), a fin de identificar los principales factores asociados a la decisión
+        de permanencia o renuncia dentro de la organización.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Measurable (Medible)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Construir y validar un modelo de <strong>clasificación supervisada</strong> que permita estimar la probabilidad
+        de rotación de empleados. Se evaluará su desempeño mediante métricas cuantitativas de clasificación:
+    </p>
+
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li><strong>Accuracy</strong>: proporción total de predicciones correctas.</li>
+        <li><strong>Precision</strong> y <strong>Recall</strong>: balance entre falsos positivos y negativos.</li>
+        <li><strong>F1-score</strong>: métrica principal de éxito, con una meta ≥ <strong>0.80</strong>.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Achievable (Alcanzable)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        El análisis se desarrollará utilizando herramientas reproducibles del ecosistema de <strong>Python</strong>
+        (<code>pandas</code>, <code>scikit-learn</code>, <code>matplotlib</code>, <code>seaborn</code>,
+        <code>plotly</code>).
+        El dataset (<code>HREmployee_data.csv</code>) cuenta con un tamaño adecuado para entrenamiento y prueba,
+        permitiendo aplicar modelos de regresión logística, Random Forest y XGBoost sin limitaciones computacionales
+        significativas.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Relevant (Relevante)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Este análisis aporta valor estratégico al área de Recursos Humanos al transformar datos históricos en
+        <strong>insights accionables</strong> que orienten políticas de retención de talento, reducción de costos de
+        rotación y mejora del clima organizacional. Además, promueve el uso ético y transparente de la analítica
+        dentro de los procesos de gestión del talento.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Time-bound (Temporal)</h4>
+    <p class="text-lg text-gray-300 leading-relaxed">
+        El proyecto se desarrollará durante el <strong>Sprint 1</strong> de la asignatura <i>Modelamiento de Datos
+            I</i>,
+        entregando un análisis reproducible y visualizaciones explicativas en un sitio web académico
+        (<i>Google Sites</i> o <i>GitHub Pages</i>). Los resultados del modelo y su validación se presentarán
+        en la defensa plenaria correspondiente.
+    </p>
+
+</section>
+
+<section id="section1-alcance" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        4. Delimitación del Alcance
+    </h3>
+
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        El presente análisis se centra en comprender y predecir los factores que inciden en la
+        <strong>rotación de empleados</strong> (<code>Attrition</code>) dentro de una organización.
+        Para ello, se utiliza el dataset <code>HREmployee_data.csv</code>, que contiene variables
+        demográficas, laborales, de desempeño, satisfacción y compensación económica.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables Incluidas</h4>
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li><strong>Variable objetivo:</strong> Estado del empleado (<code>Attrition</code>) — clasifica si el
+            colaborador permanece, renuncia voluntariamente o fue desvinculado.</li>
+        <li><strong>Satisfacción laboral</strong> (<code>JobSatisfaction</code>) — nivel de satisfacción general del
+            empleado con su trabajo.</li>
+        <li><strong>Equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) — percepción del balance entre las
+            responsabilidades laborales y personales.</li>
+        <li><strong>Desempeño</strong> (<code>PerformanceRating</code>) — evaluación del rendimiento otorgada por el
+            supervisor directo.</li>
+        <li><strong>Horas extras</strong> (<code>OverTime</code>) — indica si el empleado realiza trabajo adicional
+            fuera de su jornada habitual.</li>
+        <li><strong>Años en la empresa</strong> (<code>YearsAtCompany</code>) — tiempo total de permanencia del empleado
+            en la organización.</li>
+        <li><strong>Departamento</strong> (<code>Department</code>) — área o división funcional donde trabaja el
+            empleado.</li>
+        <li><strong>Rol o puesto</strong> (<code>JobRole</code>) — cargo o función específica desempeñada dentro del
+            departamento.</li>
+        <li><strong>Edad</strong> (<code>Age</code>) — años cumplidos por el empleado.</li>
+        <li><strong>Género</strong> (<code>Gender</code>) — categoría binaria (masculino o femenino).</li>
+        <li><strong>Estado civil</strong> (<code>MaritalStatus</code>) — situación familiar (soltero, casado o
+            divorciado).</li>
+        <li><strong>Nivel educativo</strong> (<code>Education</code>) — máximo nivel de formación alcanzado.</li>
+        <li><strong>Satisfacción con el entorno</strong> (<code>EnvironmentSatisfaction</code>) — percepción del
+            ambiente físico y social de trabajo.</li>
+        <li><strong>Distancia desde el hogar</strong> (<code>DistanceFromHome</code>) — distancia entre el domicilio del
+            empleado y la oficina (en km).</li>
+        <li><strong>Ingreso mensual</strong> (<code>MonthlyIncome</code>) — remuneración bruta promedio mensual del
+            empleado.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables Excluidas</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Se excluyeron variables redundantes o derivadas con riesgo de <i>data leakage</i>, como
+        <strong>Edad al comenzar a trabajar</strong> (<code>AgeStartedWorking</code>),
+        <strong>Experiencia total</strong> (<code>TotalWorkingYears</code>) y
+        <strong>Antigüedad promedio</strong> (<code>AverageTenure</code>),
+        debido a que pueden anticipar directamente la variable objetivo.
+        Asimismo, se eliminaron variables de identificación personal (<code>EmployeeNumber</code>,
+        <code>ApplicationID</code>) por no aportar valor predictivo.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Periodo y Cobertura</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        El conjunto de datos proviene de registros internos anonimizados de empleados, con cobertura
+        suficiente para capturar patrones de comportamiento laboral. Cada observación
+        corresponde a un individuo único, sin repetición temporal, por lo que el análisis se
+        considerará <strong>transversal</strong> (cross-sectional).
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Limitaciones Éticas</h4>
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li>Todos los datos están completamente anonimizados y no contienen información personal sensible.</li>
+        <li>El análisis tiene un propósito estrictamente académico y evita cualquier uso discriminatorio o sesgado.</li>
+        <li>Las predicciones se interpretan como apoyo a la toma de decisiones, no como mecanismos automáticos de
+            selección o despido.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Limitaciones de Recursos</h4>
+    <p class="text-lg text-gray-300 leading-relaxed">
+        El modelamiento se desarrollará en <strong>Python</strong>, empleando librerías de código abierto
+        (<code>pandas</code>, <code>scikit-learn</code>, <code>matplotlib</code>, <code>plotly</code>).
+        El procesamiento y las visualizaciones se ejecutarán en un entorno local controlado,
+        con recursos computacionales moderados pero suficientes para aplicar validación cruzada
+        y comparar el rendimiento entre modelos de complejidad media
+        (Regresión Logística, Random Forest, XGBoost).
+    </p>
+
+</section>
+
+<section id="section1-hipotesis" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        5. Hipótesis y Criterio de Éxito
+    </h3>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Hipótesis Nula (H₀)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        No existe una relación estadísticamente significativa entre las variables laborales, demográficas y de
+        satisfacción
+        —como <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>),
+        <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>),
+        <strong>desempeño</strong> (<code>PerformanceRating</code>),
+        <strong>horas extras</strong> (<code>OverTime</code>) y
+        <strong>años en la empresa</strong> (<code>YearsAtCompany</code>)—
+        y la probabilidad de rotación de empleados (<code>Attrition</code>).
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-2">Hipótesis Alternativa (H₁)</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        Existe una relación estadísticamente significativa entre al menos una de las variables independientes
+        (<code>JobSatisfaction</code>, <code>WorkLifeBalance</code>, <code>PerformanceRating</code>,
+        <code>OverTime</code>, <code>YearsAtCompany</code>, etc.)
+        y la probabilidad de rotación de empleados (<code>Attrition</code>),
+        indicando que estos factores influyen de manera medible en la decisión de abandonar la organización.
+    </p>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Supuestos Esperados</h4>
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li>Una menor <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>) incrementa la probabilidad de
+            rotación.</li>
+        <li>Un bajo <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) se asocia con una mayor tasa
+            de abandono.</li>
+        <li>El trabajo en <strong>horas extras frecuentes</strong> (<code>OverTime</code>) contribuye a una mayor
+            probabilidad de renuncia.</li>
+        <li>Una <strong>mayor antigüedad</strong> (<code>YearsAtCompany</code>) tiende a disminuir la probabilidad de
+            rotación.</li>
+        <li>Un <strong>alto desempeño</strong> (<code>PerformanceRating</code>) podría correlacionarse con una menor
+            rotación voluntaria.</li>
+    </ul>
+
+    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Criterio de Éxito</h4>
+    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+        El modelo propuesto será considerado exitoso si cumple los siguientes criterios cuantitativos y cualitativos:
+    </p>
+
+    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+        <li><strong>Precisión (Accuracy)</strong> superior al <strong>80%</strong> en los datos de validación.</li>
+        <li><strong>F1-score</strong> mayor o igual a <strong>0.80</strong>, como métrica principal de equilibrio entre
+            precisión y sensibilidad.</li>
+        <li><strong>Significancia estadística</strong> de los predictores relevantes (p &lt; 0.05 en el modelo base de
+            regresión logística).</li>
+        <li><strong>Interpretabilidad</strong> adecuada mediante coeficientes o importancia de variables, permitiendo su
+            explicación a los tomadores de decisión.</li>
+        <li><strong>Reproducibilidad</strong> del análisis a través de código transparente y datos bien documentados.
+        </li>
+    </ul>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        El cumplimiento de estos criterios garantizará que el modelo no solo logre un desempeño predictivo sólido,
+        sino que además aporte <strong>valor explicativo y estratégico</strong> a la gestión del talento humano en la
+        organización.
+    </p>
+
+</section>
