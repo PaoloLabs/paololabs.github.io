@@ -66,47 +66,57 @@
 
     /* 🔧 Evita que el contenido quede detrás del navbar fijo */
     main {
-      padding-top: 4rem; /* Ajusta según altura de tu navbar */
+      padding-top: 4rem;
+      /* Ajusta según altura de tu navbar */
     }
 
     /* 🔧 Ajuste para hero section */
     .hero-section {
-      margin-top: -4rem; /* Compensa el padding-top del main */
-      padding-top: 8rem; /* Espacio para que no quede detrás del navbar */
+      margin-top: -4rem;
+      /* Compensa el padding-top del main */
+      padding-top: 8rem;
+      /* Espacio para que no quede detrás del navbar */
     }
 
     /* 🔧 Mejora visual del overlay del hero */
     .hero-overlay {
-      background: linear-gradient(
-        135deg, 
-        rgba(0, 0, 0, 0.7) 0%, 
-        rgba(0, 0, 0, 0.5) 50%,
-        rgba(0, 0, 0, 0.7) 100%
-      );
+      background: linear-gradient(135deg,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.5) 50%,
+          rgba(0, 0, 0, 0.7) 100%);
     }
   </style>
 
-  <!-- MathJax Configuración -->
+  <!-- MathJax Configuración CORREGIDA -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
+        processEscapes: true,
+        processEnvironments: true
       },
       options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
       },
-      svg: { fontCache: 'global' }
+      svg: {
+        fontCache: 'global',
+        scale: 1.2  // Hace las fórmulas más grandes
+      },
+      startup: {
+        pageReady: () => {
+          return MathJax.startup.defaultPageReady().then(() => {
+            console.log('MathJax loaded successfully');
+          });
+        }
+      }
     };
   </script>
 
-  <!-- MathJax Script CDN -->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onload="document.addEventListener('DOMContentLoaded', () => {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        MathJax.typesetPromise();
-      }
-    });">
+  <!-- MathJax Script CDN - VERSIÓN CORRECTA -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 </head>
 
@@ -144,18 +154,24 @@
 
     <!-- Menú desplegable móvil -->
     <div id="navMenu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
-      <a href="#section1" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">1. Problema</a>
-      <a href="#section2" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">2. Técnica</a>
-      <a href="#section3" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">3. Competidores</a>
-      <a href="#section4" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">4. Comparación</a>
-      <a href="#section5" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">5. Conclusiones</a>
+      <a href="#section1" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">1.
+        Problema</a>
+      <a href="#section2" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">2.
+        Técnica</a>
+      <a href="#section3" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">3.
+        Competidores</a>
+      <a href="#section4" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">4.
+        Comparación</a>
+      <a href="#section5" class="block text-gray-300 hover:bg-green-600 hover:text-white px-6 py-3 transition">5.
+        Conclusiones</a>
     </div>
   </nav>
 
   <!-- Main Content Wrapper -->
   <main>
     <!-- Hero Section -->
-    <section class="hero-section bg-gray-800 text-center py-20 px-4 border-b border-gray-700 relative overflow-hidden min-h-screen flex items-center justify-center"
+    <section
+      class="hero-section bg-gray-800 text-center py-20 px-4 border-b border-gray-700 relative overflow-hidden min-h-screen flex items-center justify-center"
       style="background-image: url('./assets/hr_background.png'); background-size: cover; background-position: center;">
       <div class="hero-overlay absolute inset-0"></div>
       <div class="relative z-10 hero-content max-w-4xl mx-auto">
@@ -204,11 +220,11 @@
     const hamburgerToggle = document.getElementById('hamburgerToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('#navMenu a');
-    
+
     hamburgerToggle.addEventListener('click', () => {
       navMenu.classList.toggle('hidden');
     });
-    
+
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.add('hidden');
@@ -243,7 +259,7 @@
           <p class="text-gray-500 mt-4">Cargando sección...</p>
         </div>
       `;
-      
+
       fetch(file)
         .then(res => {
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);

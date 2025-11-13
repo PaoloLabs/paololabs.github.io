@@ -9,7 +9,7 @@
     </h3>
 
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Dado que la variable objetivo <strong>rotación de empleados</strong> (<code>Attrition</code>)
+        Dado que la variable objetivo <strong>rotación de empleados</strong> (<code class="bg-gray-700 px-2 py-1 rounded">Attrition</code>)
         es de naturaleza <strong>categórica binaria</strong> —indicando si un empleado
         <em>permanece</em> o <em>abandona</em> la organización—, se requiere una técnica de
         <strong>modelamiento supervisado de clasificación</strong> que permita estimar la
@@ -21,9 +21,9 @@
         se selecciona la <strong>Regresión Logística</strong> como modelo principal por las siguientes razones:
     </p>
 
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
+    <ul class="list-disc list-inside text-gray-300 mb-6 ml-4 space-y-3">
         <li><strong>Interpretabilidad:</strong> permite cuantificar el efecto de cada variable independiente
-            sobre la probabilidad de rotación mediante los coeficientes <i>β</i>, expresables como <i>odds ratios</i>.
+            sobre la probabilidad de rotación mediante los coeficientes $\beta$, expresables como <i>odds ratios</i>.
         </li>
         <li><strong>Compatibilidad estadística:</strong> cumple los supuestos de independencia y linealidad
             entre los predictores y la log-odds del evento, adecuados para las variables del dataset.</li>
@@ -33,7 +33,7 @@
             analistas y gestores de talento humano sin necesidad de conocimientos avanzados de IA.</li>
     </ul>
 
-    <p class="text-lg text-gray-300 leading-relaxed">
+    <p class="text-lg text-gray-300 leading-relaxed mb-6">
         Este modelo servirá como punto de partida (<i>baseline</i>) para comparar su desempeño con
         modelos más complejos en la siguiente fase, donde se aplicarán técnicas competidoras
         como <i>Random Forest</i> y <i>XGBoost</i>.
@@ -43,13 +43,13 @@
 
 <section id="section2-funcion" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
-    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
         2. Representación Matemática del Modelo
     </h3>
 
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
         La <strong>Regresión Logística Binaria</strong> modela la relación entre una variable dependiente
-        categórica (<code>Attrition</code>) y un conjunto de variables independientes explicativas,
+        categórica (<code class="bg-gray-700 px-2 py-1 rounded">Attrition</code>) y un conjunto de variables independientes explicativas,
         estimando la <strong>probabilidad de ocurrencia</strong> de un evento (renuncia del empleado).
     </p>
 
@@ -58,61 +58,86 @@
         en una probabilidad comprendida entre 0 y 1:
     </p>
 
-    <!-- Ajuste global para evitar saltos de línea en fórmulas MathJax -->
-    <style>
-        mjx-container[jax="SVG"] {
-            display: inline !important;
-            vertical-align: middle !important;
-        }
-    </style>
-
-    <div class="bg-gray-900 p-4 rounded-md text-gray-300 text-center text-lg mb-4 shadow-inner">
-        $$ P(Attrition = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n)}} $$
+    <!-- Fórmula principal en bloque -->
+    <div class="bg-gray-900 p-6 rounded-lg text-center my-6 overflow-x-auto shadow-inner">
+        $$
+        P(\text{Attrition} = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n)}}
+        $$
     </div>
 
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
+    <p class="text-lg mb-3 text-gray-300 leading-relaxed font-semibold">
         Donde:
     </p>
 
-    <div
-        class="border-l-4 border-green-400 bg-gray-900/50 p-4 rounded-r-lg text-gray-300 text-base space-y-2 shadow-inner">
-        <p><strong>\(P(Attrition = 1)\)</strong> — probabilidad de que un empleado abandone la organización.</p>
-        <p><strong>\(\beta_0\)</strong> — término independiente o constante del modelo.</p>
-        <p><strong>\(\beta_i\)</strong> — coeficiente asociado a cada variable predictora \(X_i\), que representa su
-            influencia en la probabilidad de rotación.</p>
-        <p><strong>\(e\)</strong> — base del logaritmo natural.</p>
+    <div class="border-l-4 border-green-400 bg-gray-900/50 p-5 rounded-r-lg text-gray-300 space-y-3 shadow-inner mb-6">
+        <p class="flex items-start">
+            <span class="font-mono text-green-300 mr-2">•</span>
+            <span>$P(\text{Attrition} = 1)$ — probabilidad de que un empleado abandone la organización.</span>
+        </p>
+        <p class="flex items-start">
+            <span class="font-mono text-green-300 mr-2">•</span>
+            <span>$\beta_0$ — término independiente o constante del modelo.</span>
+        </p>
+        <p class="flex items-start">
+            <span class="font-mono text-green-300 mr-2">•</span>
+            <span>$\beta_i$ — coeficiente asociado a cada variable predictora $X_i$, que representa su influencia en la probabilidad de rotación.</span>
+        </p>
+        <p class="flex items-start">
+            <span class="font-mono text-green-300 mr-2">•</span>
+            <span>$e$ — base del logaritmo natural (≈ 2.71828).</span>
+        </p>
     </div>
 
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
         La ecuación lineal interna del modelo se expresa como:
     </p>
 
-    <div class="bg-gray-900 p-4 rounded-md text-gray-300 text-center text-lg mb-4 shadow-inner">
-        $$ logit(P) = ln\left(\frac{P}{1 - P}\right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n $$
+    <!-- Fórmula logit -->
+    <div class="bg-gray-900 p-6 rounded-lg text-center my-6 overflow-x-auto shadow-inner">
+        $$
+        \text{logit}(P) = \ln\left(\frac{P}{1 - P}\right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n
+        $$
     </div>
 
-    <p class="text-lg text-gray-300 leading-relaxed">
+    <p class="text-lg text-gray-300 leading-relaxed mb-6">
         En este caso, la función logit permite interpretar los coeficientes del modelo en términos de
-        <strong>odds ratios</strong>, donde un valor positivo de \( \beta_i \) indica un aumento en la probabilidad
+        <strong class="text-green-400">odds ratios</strong>, donde un valor positivo de $\beta_i$ indica un aumento en la probabilidad
         de rotación, mientras que un valor negativo sugiere un efecto protector o de permanencia.
     </p>
 
 </section>
 
-<p class="text-lg mt-6 text-gray-300 leading-relaxed">
-    Antes de aplicar el modelo de <strong>Regresión Logística</strong>, se realizó un
-    <strong>análisis exploratorio de datos (EDA)</strong> sobre el conjunto
-    <code>HREmployee_data.csv</code> con el propósito de comprender la estructura y
-    calidad de la información, identificar posibles valores atípicos y evaluar la
-    distribución de las variables más relevantes.
-    Esta etapa permitió visualizar patrones iniciales de comportamiento entre la
-    <em>rotación de empleados</em> (<code>Attrition</code>) y factores como la
-    <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>),
-    <strong>trabajo en horas extras</strong> (<code>OverTime</code>) y
-    <strong>años en la empresa</strong> (<code>YearsAtCompany</code>),
-    así como otras dimensiones relacionadas con el desempeño
-    (<code>PerformanceRating</code>) y el equilibrio vida–trabajo
-    (<code>WorkLifeBalance</code>).
-    Los resultados de esta exploración inicial sirvieron para confirmar las hipótesis
-    planteadas y establecer una base empírica sólida para el modelamiento estadístico posterior.
-</p>
+<!-- Sección de Análisis Exploratorio -->
+<section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+    
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3. Análisis Exploratorio de Datos (EDA)
+    </h3>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        Antes de aplicar el modelo de <strong>Regresión Logística</strong>, se realizó un
+        <strong>análisis exploratorio de datos (EDA)</strong> sobre el conjunto
+        <code class="bg-gray-700 px-2 py-1 rounded">HREmployee_data.csv</code> con el propósito de comprender la estructura y
+        calidad de la información, identificar posibles valores atípicos y evaluar la
+        distribución de las variables más relevantes.
+    </p>
+
+    <p class="text-lg mt-4 text-gray-300 leading-relaxed">
+        Esta etapa permitió visualizar patrones iniciales de comportamiento entre la
+        <em>rotación de empleados</em> (<code class="bg-gray-700 px-2 py-1 rounded">Attrition</code>) y factores como:
+    </p>
+
+    <ul class="list-disc list-inside text-gray-300 my-4 ml-4 space-y-2">
+        <li><strong>Satisfacción laboral</strong> (<code class="bg-gray-700 px-2 py-1 rounded">JobSatisfaction</code>)</li>
+        <li><strong>Trabajo en horas extras</strong> (<code class="bg-gray-700 px-2 py-1 rounded">OverTime</code>)</li>
+        <li><strong>Años en la empresa</strong> (<code class="bg-gray-700 px-2 py-1 rounded">YearsAtCompany</code>)</li>
+        <li><strong>Desempeño</strong> (<code class="bg-gray-700 px-2 py-1 rounded">PerformanceRating</code>)</li>
+        <li><strong>Equilibrio vida–trabajo</strong> (<code class="bg-gray-700 px-2 py-1 rounded">WorkLifeBalance</code>)</li>
+    </ul>
+
+    <p class="text-lg text-gray-300 leading-relaxed">
+        Los resultados de esta exploración inicial sirvieron para confirmar las hipótesis
+        planteadas y establecer una base empírica sólida para el modelamiento estadístico posterior.
+    </p>
+
+</section>
