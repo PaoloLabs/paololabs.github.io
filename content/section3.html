@@ -9,8 +9,8 @@
     </h2>
 
     <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-        Se implementaron <strong>4 modelos de clasificación</strong> bajo las mismas condiciones 
-        experimentales para comparar desempeño predictivo. Objetivo: determinar si modelos más 
+        Se implementaron <strong>4 modelos de clasificación</strong> bajo las mismas condiciones
+        experimentales para comparar desempeño predictivo. Objetivo: determinar si modelos más
         complejos superan a la Regresión Logística baseline.
     </p>
 
@@ -31,7 +31,7 @@
             🔬 Proceso de Refinamiento
         </h4>
         <p class="text-gray-300 text-xs mb-3">
-            El modelo de Regresión Logística presentado es el resultado de un proceso iterativo 
+            El modelo de Regresión Logística presentado es el resultado de un proceso iterativo
             documentado en el notebook de análisis:
         </p>
         <ol class="list-decimal list-inside text-gray-300 text-xs space-y-1">
@@ -41,6 +41,34 @@
             <li>Seleccionamos 13 variables finales (8 numéricas + 5 categóricas)</li>
             <li>Entrenamos 4 modelos para comparación robusta</li>
         </ol>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4">Modelo de Regresión Logística Binaria</h2>
+
+    <p>El modelo de regresión logística binaria se define de la siguiente forma:</p>
+
+    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
+        <p class="italic">“La probabilidad de que ocurra el evento (Y = 1) está dada por”</p>
+        <p class="text-lg font-mono">
+            \( P(Y = 1 \mid X) = \frac{1}{1 + e^{- \left( \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots +
+            \beta_{p}X_{p} \right) }} \)
+        </p>
+
+        <p>Donde:</p>
+        <ul class="list-disc list-inside">
+            <li><strong>β₀</strong>: intercepto del modelo</li>
+            <li><strong>β₁…βₚ</strong>: coeficientes estimados para cada predictor X₁…Xₚ</li>
+            <li><strong>X₁…Xₚ</strong>: variables independientes seleccionadas</li>
+        </ul>
+    </div>
+
+    <p>La forma logit (odds) es:</p>
+
+    <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded mb-6">
+        <p class="text-lg font-mono">
+            \( \log\left(\frac{P(Y = 1 \mid X)}{1 - P(Y = 1 \mid X)}\right) = \beta_{0} + \beta_{1}X_{1} + \dots +
+            \beta_{p}X_{p} \)
+        </p>
     </div>
 
     <!-- Grid de modelos -->
@@ -123,11 +151,11 @@
     </h3>
 
     <div class="grid md:grid-cols-2 gap-4">
-        
+
         <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
             <p class="text-green-400 font-semibold text-sm mb-2">⚖️ Manejo de Desbalance</p>
             <p class="text-gray-300 text-xs">
-                <code class="bg-gray-700 px-1 rounded">class_weight='balanced'</code> en todos los modelos 
+                <code class="bg-gray-700 px-1 rounded">class_weight='balanced'</code> en todos los modelos
                 para ratio 5.2:1 (No Attrition/Attrition)
             </p>
         </div>
@@ -168,7 +196,7 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Desempeño de los 4 modelos en el conjunto de prueba (441 muestras). 
+        Desempeño de los 4 modelos en el conjunto de prueba (441 muestras).
         Todos fueron evaluados bajo las mismas condiciones experimentales.
     </p>
 
@@ -187,7 +215,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-700 text-gray-200">
-                
+
                 <!-- Logistic Regression - GANADOR -->
                 <tr class="bg-green-900/30 font-semibold">
                     <td class="px-4 py-3 text-green-400">
@@ -240,7 +268,7 @@
 
     <!-- Interpretación clave -->
     <div class="grid md:grid-cols-2 gap-4">
-        
+
         <!-- Mejor modelo -->
         <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-4">
             <h4 class="text-green-300 font-semibold text-sm mb-2">
@@ -288,9 +316,8 @@
         <h4 class="text-lg font-semibold text-green-400 mb-3">
             📊 Comparación de Métricas por Modelo
         </h4>
-        <img src="assets/fig7_model_comparison.png" 
-             alt="Comparación de todas las métricas entre modelos"
-             class="w-full rounded-lg shadow-md border border-gray-700">
+        <img src="assets/fig7_model_comparison.png" alt="Comparación de todas las métricas entre modelos"
+            class="w-full rounded-lg shadow-md border border-gray-700">
         <p class="text-xs text-gray-400 text-center italic mt-2">
             Figura 3.1 - Comparación de 6 métricas: Logistic Regression lidera en ROC-AUC y Recall
         </p>
@@ -301,9 +328,8 @@
         <h4 class="text-lg font-semibold text-green-400 mb-3">
             📈 Curvas ROC - Capacidad Discriminativa
         </h4>
-        <img src="assets/fig8_roc_curves.png" 
-             alt="Curvas ROC de los 4 modelos comparados"
-             class="w-full rounded-lg shadow-md border border-gray-700">
+        <img src="assets/fig8_roc_curves.png" alt="Curvas ROC de los 4 modelos comparados"
+            class="w-full rounded-lg shadow-md border border-gray-700">
         <p class="text-xs text-gray-400 text-center italic mt-2">
             Figura 3.2 - Curvas ROC: Logistic Regression (AUC=0.791) supera a todos los modelos ensemble
         </p>
@@ -314,9 +340,8 @@
         <h4 class="text-lg font-semibold text-green-400 mb-3">
             🎯 Matrices de Confusión - Detalle de Errores
         </h4>
-        <img src="assets/fig9_confusion_matrices.png" 
-             alt="Matrices de confusión de los 4 modelos"
-             class="w-full rounded-lg shadow-md border border-gray-700">
+        <img src="assets/fig9_confusion_matrices.png" alt="Matrices de confusión de los 4 modelos"
+            class="w-full rounded-lg shadow-md border border-gray-700">
         <p class="text-xs text-gray-400 text-center italic mt-2">
             Figura 3.3 - Logistic Regression detecta 49/71 renuncias vs 17/71 de Gradient Boosting
         </p>
@@ -339,8 +364,8 @@
             ✅ Conclusión: Logistic Regression es el Modelo Óptimo
         </h4>
         <p class="text-gray-300 text-sm leading-relaxed mb-3">
-            Aunque los modelos ensemble (RF, XGB, GB) logran mayor <strong>Accuracy</strong> 
-            (81-83%), la <strong>Regresión Logística</strong> supera en las métricas críticas 
+            Aunque los modelos ensemble (RF, XGB, GB) logran mayor <strong>Accuracy</strong>
+            (81-83%), la <strong>Regresión Logística</strong> supera en las métricas críticas
             para este problema de negocio:
         </p>
 
@@ -360,24 +385,24 @@
         </div>
 
         <p class="text-blue-300 text-xs italic">
-            <strong>💡 Insight clave:</strong> En problemas de desbalance de clases donde el 
-            costo de NO detectar la clase minoritaria es alto (renuncias), 
-            <strong>Recall > Accuracy</strong>. Logistic Regression optimiza esta métrica 
+            <strong>💡 Insight clave:</strong> En problemas de desbalance de clases donde el
+            costo de NO detectar la clase minoritaria es alto (renuncias),
+            <strong>Recall > Accuracy</strong>. Logistic Regression optimiza esta métrica
             manteniendo interpretabilidad para el área de RRHH.
         </p>
     </div>
 
     <!-- Razones detalladas -->
     <div class="space-y-3">
-        
+
         <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
             <p class="text-yellow-300 font-semibold text-sm mb-2">
                 1️⃣ Superior Capacidad de Detección de Renuncias
             </p>
             <p class="text-gray-300 text-xs">
-                Logistic Regression identifica <strong>49 de 71 renuncias</strong> (69%), 
-                mientras que Gradient Boosting solo detecta <strong>17 de 71</strong> (24%). 
-                En un contexto de retención de talento, cada renuncia detectada permite 
+                Logistic Regression identifica <strong>49 de 71 renuncias</strong> (69%),
+                mientras que Gradient Boosting solo detecta <strong>17 de 71</strong> (24%).
+                En un contexto de retención de talento, cada renuncia detectada permite
                 intervención proactiva.
             </p>
         </div>
@@ -387,9 +412,9 @@
                 2️⃣ Interpretabilidad para Decisiones de Negocio
             </p>
             <p class="text-gray-300 text-xs">
-                Los coeficientes del modelo logístico se expresan como <strong>odds ratios</strong>, 
-                permitiendo comunicar a RRHH: "Realizar horas extra incrementa las odds de 
-                renuncia en X veces". Los modelos ensemble (caja negra) carecen de esta 
+                Los coeficientes del modelo logístico se expresan como <strong>odds ratios</strong>,
+                permitiendo comunicar a RRHH: "Realizar horas extra incrementa las odds de
+                renuncia en X veces". Los modelos ensemble (caja negra) carecen de esta
                 transparencia.
             </p>
         </div>
@@ -399,7 +424,7 @@
                 3️⃣ Balance Eficiencia-Desempeño
             </p>
             <p class="text-gray-300 text-xs">
-                Entrenamiento <strong>12x más rápido</strong> que Gradient Boosting (0.09s vs 1.08s) 
+                Entrenamiento <strong>12x más rápido</strong> que Gradient Boosting (0.09s vs 1.08s)
                 con desempeño superior. Facilita reentrenamiento frecuente con datos actualizados.
             </p>
         </div>
@@ -409,8 +434,8 @@
                 4️⃣ Cumplimiento del Objetivo SMART
             </p>
             <p class="text-gray-300 text-xs">
-                Cumple y supera todas las metas establecidas: ROC-AUC=0.79 (≥0.75 ✓), 
-                Recall=69% (≥65% ✓), con metodología rigurosa (validación cruzada, 
+                Cumple y supera todas las metas establecidas: ROC-AUC=0.79 (≥0.75 ✓),
+                Recall=69% (≥65% ✓), con metodología rigurosa (validación cruzada,
                 feature selection, comparación de modelos ✓).
             </p>
         </div>
@@ -430,24 +455,24 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Los coeficientes del modelo logístico revelan qué variables tienen mayor impacto 
-        en la predicción de <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>. 
+        Los coeficientes del modelo logístico revelan qué variables tienen mayor impacto
+        en la predicción de <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>.
         A continuación se destacan los 5 factores más influyentes:
     </p>
 
     <div class="grid md:grid-cols-2 gap-4">
-        
+
         <!-- Factores que AUMENTAN rotación -->
         <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-5">
             <h4 class="text-red-300 font-semibold text-sm mb-3">
                 🔴 Factores de RIESGO (aumentan rotación)
             </h4>
             <div class="space-y-3 text-xs">
-                
+
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-red-400 font-semibold mb-1">⏰ OverTime = Yes</p>
                     <p class="text-gray-300">
-                        Realizar horas extra incrementa significativamente la probabilidad 
+                        Realizar horas extra incrementa significativamente la probabilidad
                         de renuncia. Es el predictor más fuerte del modelo.
                     </p>
                 </div>
@@ -455,7 +480,7 @@
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-red-400 font-semibold mb-1">👤 Empleados Jóvenes</p>
                     <p class="text-gray-300">
-                        Menor edad se asocia con mayor movilidad laboral y disposición 
+                        Menor edad se asocia con mayor movilidad laboral y disposición
                         a explorar nuevas oportunidades.
                     </p>
                 </div>
@@ -463,7 +488,7 @@
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-red-400 font-semibold mb-1">💼 JobRole específicos</p>
                     <p class="text-gray-300">
-                        Sales Representatives y Lab Technicians muestran mayor riesgo 
+                        Sales Representatives y Lab Technicians muestran mayor riesgo
                         de rotación que otros roles.
                     </p>
                 </div>
@@ -477,11 +502,11 @@
                 🟢 Factores PROTECTORES (reducen rotación)
             </h4>
             <div class="space-y-3 text-xs">
-                
+
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-green-400 font-semibold mb-1">😊 Alta Satisfacción Laboral</p>
                     <p class="text-gray-300">
-                        Niveles altos de JobSatisfaction (3-4) reducen significativamente 
+                        Niveles altos de JobSatisfaction (3-4) reducen significativamente
                         la probabilidad de renuncia.
                     </p>
                 </div>
@@ -489,7 +514,7 @@
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-green-400 font-semibold mb-1">👔 Antigüedad con el Supervisor</p>
                     <p class="text-gray-300">
-                        Mayor tiempo con el mismo manager (YearsWithCurrManager) indica 
+                        Mayor tiempo con el mismo manager (YearsWithCurrManager) indica
                         relación estable y actúa como factor protector.
                     </p>
                 </div>
@@ -497,7 +522,7 @@
                 <div class="bg-gray-900/50 p-3 rounded-lg">
                     <p class="text-green-400 font-semibold mb-1">🏢 Años en la Empresa</p>
                     <p class="text-gray-300">
-                        Mayor antigüedad (YearsAtCompany) correlaciona con compromiso 
+                        Mayor antigüedad (YearsAtCompany) correlaciona con compromiso
                         organizacional y menor intención de renuncia.
                     </p>
                 </div>
@@ -514,23 +539,23 @@
         </h4>
         <ul class="text-gray-300 text-xs space-y-2 list-disc list-inside">
             <li>
-                <strong>Gestión de horas extra:</strong> Monitorear y limitar carga de 
+                <strong>Gestión de horas extra:</strong> Monitorear y limitar carga de
                 trabajo adicional, especialmente en roles críticos
             </li>
             <li>
-                <strong>Retención temprana:</strong> Programas de engagement dirigidos a 
+                <strong>Retención temprana:</strong> Programas de engagement dirigidos a
                 empleados con 1-3 años de antigüedad (ventana crítica)
             </li>
             <li>
-                <strong>Satisfacción como indicador:</strong> Encuestas periódicas de 
+                <strong>Satisfacción como indicador:</strong> Encuestas periódicas de
                 JobSatisfaction como sistema de alerta temprana
             </li>
             <li>
-                <strong>Estabilidad gerencial:</strong> Evitar rotación frecuente de 
+                <strong>Estabilidad gerencial:</strong> Evitar rotación frecuente de
                 supervisores, fortalecer relación empleado-manager
             </li>
             <li>
-                <strong>Intervención proactiva:</strong> Score de riesgo mensual para 
+                <strong>Intervención proactiva:</strong> Score de riesgo mensual para
                 identificar empleados con probabilidad >0.5 de renuncia
             </li>
         </ul>
