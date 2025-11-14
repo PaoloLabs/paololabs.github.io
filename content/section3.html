@@ -1,0 +1,543 @@
+<!-- ============================================================================ -->
+<!-- SECCIÓN 3: MODELOS COMPETIDORES - VERSIÓN CONCISA CON RESULTADOS REALES   -->
+<!-- ============================================================================ -->
+
+<section id="section3" class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h2 class="text-3xl font-bold text-green-500 mb-5 border-b border-gray-700 pb-3">
+        Sección 3: Uso de Técnicas Analíticas Competidoras
+    </h2>
+
+    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+        Se implementaron <strong>4 modelos de clasificación</strong> bajo las mismas condiciones 
+        experimentales para comparar desempeño predictivo. Objetivo: determinar si modelos más 
+        complejos superan a la Regresión Logística baseline.
+    </p>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.1 MODELOS IMPLEMENTADOS                                                  -->
+<!-- ============================================================================ -->
+
+<section id="section3-modelos" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.1 Modelos Implementados
+    </h3>
+
+    <div class="bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg p-5 mb-6">
+        <h4 class="text-blue-300 font-semibold text-sm mb-3">
+            🔬 Proceso de Refinamiento
+        </h4>
+        <p class="text-gray-300 text-xs mb-3">
+            El modelo de Regresión Logística presentado es el resultado de un proceso iterativo 
+            documentado en el notebook de análisis:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 text-xs space-y-1">
+            <li>Partimos de 35 variables originales del dataset</li>
+            <li>Analizamos multicolinealidad y significancia estadística</li>
+            <li>Descartamos variables redundantes (|r| > 0.7)</li>
+            <li>Seleccionamos 13 variables finales (8 numéricas + 5 categóricas)</li>
+            <li>Entrenamos 4 modelos para comparación robusta</li>
+        </ol>
+    </div>
+
+    <!-- Grid de modelos -->
+    <div class="grid md:grid-cols-2 gap-4">
+
+        <!-- Modelo 1: Logistic Regression -->
+        <div class="bg-green-900/20 border-2 border-green-500 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+                <h4 class="text-lg font-semibold text-green-400">
+                    🏆 Logistic Regression
+                </h4>
+                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                    BASELINE
+                </span>
+            </div>
+            <p class="text-gray-300 text-xs mb-2">
+                Modelo lineal interpretable que estima probabilidades mediante función logística.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Interpretable</span>
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Odds ratios</span>
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Rápido</span>
+            </div>
+        </div>
+
+        <!-- Modelo 2: Random Forest -->
+        <div class="bg-gray-700/60 border border-gray-600 rounded-lg p-4">
+            <h4 class="text-lg font-semibold text-blue-400 mb-2">
+                🌲 Random Forest
+            </h4>
+            <p class="text-gray-300 text-xs mb-2">
+                Ensemble de 100 árboles de decisión entrenados sobre subconjuntos aleatorios.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ No lineal</span>
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Robusto</span>
+            </div>
+        </div>
+
+        <!-- Modelo 3: XGBoost -->
+        <div class="bg-gray-700/60 border border-gray-600 rounded-lg p-4">
+            <h4 class="text-lg font-semibold text-yellow-400 mb-2">
+                ⚡ XGBoost
+            </h4>
+            <p class="text-gray-300 text-xs mb-2">
+                Gradient boosting optimizado con regularización incorporada.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Alta precisión</span>
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Regularizado</span>
+            </div>
+        </div>
+
+        <!-- Modelo 4: Gradient Boosting -->
+        <div class="bg-gray-700/60 border border-gray-600 rounded-lg p-4">
+            <h4 class="text-lg font-semibold text-purple-400 mb-2">
+                🚀 Gradient Boosting
+            </h4>
+            <p class="text-gray-300 text-xs mb-2">
+                Boosting secuencial que construye árboles corrigiendo errores previos.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Secuencial</span>
+                <span class="bg-gray-700 px-2 py-1 rounded">✓ Flexible</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.2 CONFIGURACIÓN EXPERIMENTAL                                             -->
+<!-- ============================================================================ -->
+
+<section id="section3-configuracion" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.2 Configuración Experimental
+    </h3>
+
+    <div class="grid md:grid-cols-2 gap-4">
+        
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-green-400 font-semibold text-sm mb-2">⚖️ Manejo de Desbalance</p>
+            <p class="text-gray-300 text-xs">
+                <code class="bg-gray-700 px-1 rounded">class_weight='balanced'</code> en todos los modelos 
+                para ratio 5.2:1 (No Attrition/Attrition)
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-green-400 font-semibold text-sm mb-2">📊 Partición de Datos</p>
+            <p class="text-gray-300 text-xs">
+                Train: 1,029 muestras (70%) | Test: 441 muestras (30%) con estratificación
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-green-400 font-semibold text-sm mb-2">🔄 Validación</p>
+            <p class="text-gray-300 text-xs">
+                5-fold cross-validation aplicada en conjunto de entrenamiento
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-green-400 font-semibold text-sm mb-2">📏 Métricas</p>
+            <p class="text-gray-300 text-xs">
+                ROC-AUC (principal), Recall, Precision, F1-Score, Accuracy
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.3 RESULTADOS COMPARATIVOS - TABLA CON DATOS REALES                      -->
+<!-- ============================================================================ -->
+
+<section id="section3-resultados" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.3 Resultados Comparativos
+    </h3>
+
+    <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+        Desempeño de los 4 modelos en el conjunto de prueba (441 muestras). 
+        Todos fueron evaluados bajo las mismas condiciones experimentales.
+    </p>
+
+    <!-- Tabla de resultados REALES -->
+    <div class="bg-gray-900 border border-gray-700 rounded-lg overflow-x-auto mb-6">
+        <table class="min-w-full divide-y divide-gray-700 text-sm">
+            <thead class="bg-gray-700">
+                <tr>
+                    <th class="px-4 py-3 text-left font-semibold text-white">Modelo</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">ROC-AUC</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">Recall</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">Precision</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">F1-Score</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">Accuracy</th>
+                    <th class="px-4 py-3 text-center font-semibold text-white">Tiempo (s)</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-700 text-gray-200">
+                
+                <!-- Logistic Regression - GANADOR -->
+                <tr class="bg-green-900/30 font-semibold">
+                    <td class="px-4 py-3 text-green-400">
+                        🏆 Logistic Regression
+                    </td>
+                    <td class="px-4 py-3 text-center text-green-400 font-bold">0.7906</td>
+                    <td class="px-4 py-3 text-center text-green-400 font-bold">0.6901</td>
+                    <td class="px-4 py-3 text-center">0.3828</td>
+                    <td class="px-4 py-3 text-center">0.4925</td>
+                    <td class="px-4 py-3 text-center">0.7710</td>
+                    <td class="px-4 py-3 text-center text-gray-400">0.09</td>
+                </tr>
+
+                <!-- Random Forest -->
+                <tr>
+                    <td class="px-4 py-3 text-blue-400">Random Forest</td>
+                    <td class="px-4 py-3 text-center">0.7539</td>
+                    <td class="px-4 py-3 text-center">0.4225</td>
+                    <td class="px-4 py-3 text-center">0.4286</td>
+                    <td class="px-4 py-3 text-center">0.4255</td>
+                    <td class="px-4 py-3 text-center font-semibold">0.8163</td>
+                    <td class="px-4 py-3 text-center text-gray-400">0.66</td>
+                </tr>
+
+                <!-- XGBoost -->
+                <tr>
+                    <td class="px-4 py-3 text-yellow-400">XGBoost</td>
+                    <td class="px-4 py-3 text-center">0.7487</td>
+                    <td class="px-4 py-3 text-center">0.3944</td>
+                    <td class="px-4 py-3 text-center">0.4179</td>
+                    <td class="px-4 py-3 text-center">0.4058</td>
+                    <td class="px-4 py-3 text-center">0.8141</td>
+                    <td class="px-4 py-3 text-center text-gray-400">0.35</td>
+                </tr>
+
+                <!-- Gradient Boosting -->
+                <tr>
+                    <td class="px-4 py-3 text-purple-400">Gradient Boosting</td>
+                    <td class="px-4 py-3 text-center">0.7395</td>
+                    <td class="px-4 py-3 text-center text-red-400">0.2394</td>
+                    <td class="px-4 py-3 text-center">0.4595</td>
+                    <td class="px-4 py-3 text-center">0.3148</td>
+                    <td class="px-4 py-3 text-center font-semibold">0.8322</td>
+                    <td class="px-4 py-3 text-center text-gray-400">1.08</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Interpretación clave -->
+    <div class="grid md:grid-cols-2 gap-4">
+        
+        <!-- Mejor modelo -->
+        <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-4">
+            <h4 class="text-green-300 font-semibold text-sm mb-2">
+                🏆 Modelo Ganador: Logistic Regression
+            </h4>
+            <ul class="text-gray-300 text-xs space-y-1">
+                <li>✅ <strong>Mejor ROC-AUC:</strong> 0.7906 (cumple objetivo ≥0.75)</li>
+                <li>✅ <strong>Mejor Recall:</strong> 69% (detecta más renuncias)</li>
+                <li>✅ <strong>Más rápido:</strong> 0.09s vs 0.35-1.08s</li>
+                <li>✅ <strong>Interpretable:</strong> Coeficientes = odds ratios</li>
+            </ul>
+        </div>
+
+        <!-- Trade-off clave -->
+        <div class="bg-yellow-900/20 border-l-4 border-yellow-400 rounded-r-lg p-4">
+            <h4 class="text-yellow-300 font-semibold text-sm mb-2">
+                ⚠️ Trade-off Accuracy vs Recall
+            </h4>
+            <p class="text-gray-300 text-xs mb-2">
+                Gradient Boosting tiene mayor <strong>Accuracy</strong> (83.2%) pero:
+            </p>
+            <ul class="text-gray-300 text-xs space-y-1">
+                <li>❌ Solo detecta <strong>23.9%</strong> de renuncias reales</li>
+                <li>❌ Pierde <strong>54 de 71 renuncias</strong> en test set</li>
+                <li>✓ Logistic Regression detecta <strong>49 de 71</strong></li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.4 ANÁLISIS VISUAL                                                        -->
+<!-- ============================================================================ -->
+
+<section id="section3-visual" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.4 Análisis Visual de Desempeño
+    </h3>
+
+    <!-- Gráfico de métricas comparativas -->
+    <div class="mb-6">
+        <h4 class="text-lg font-semibold text-green-400 mb-3">
+            📊 Comparación de Métricas por Modelo
+        </h4>
+        <img src="assets/fig7_model_comparison.png" 
+             alt="Comparación de todas las métricas entre modelos"
+             class="w-full rounded-lg shadow-md border border-gray-700">
+        <p class="text-xs text-gray-400 text-center italic mt-2">
+            Figura 3.1 - Comparación de 6 métricas: Logistic Regression lidera en ROC-AUC y Recall
+        </p>
+    </div>
+
+    <!-- Curvas ROC -->
+    <div class="mb-6">
+        <h4 class="text-lg font-semibold text-green-400 mb-3">
+            📈 Curvas ROC - Capacidad Discriminativa
+        </h4>
+        <img src="assets/fig8_roc_curves.png" 
+             alt="Curvas ROC de los 4 modelos comparados"
+             class="w-full rounded-lg shadow-md border border-gray-700">
+        <p class="text-xs text-gray-400 text-center italic mt-2">
+            Figura 3.2 - Curvas ROC: Logistic Regression (AUC=0.791) supera a todos los modelos ensemble
+        </p>
+    </div>
+
+    <!-- Matrices de confusión -->
+    <div>
+        <h4 class="text-lg font-semibold text-green-400 mb-3">
+            🎯 Matrices de Confusión - Detalle de Errores
+        </h4>
+        <img src="assets/fig9_confusion_matrices.png" 
+             alt="Matrices de confusión de los 4 modelos"
+             class="w-full rounded-lg shadow-md border border-gray-700">
+        <p class="text-xs text-gray-400 text-center italic mt-2">
+            Figura 3.3 - Logistic Regression detecta 49/71 renuncias vs 17/71 de Gradient Boosting
+        </p>
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.5 INTERPRETACIÓN Y CONCLUSIONES                                         -->
+<!-- ============================================================================ -->
+
+<section id="section3-conclusiones" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.5 Interpretación y Selección del Modelo Final
+    </h3>
+
+    <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-5 mb-6">
+        <h4 class="text-green-300 font-semibold text-sm mb-3">
+            ✅ Conclusión: Logistic Regression es el Modelo Óptimo
+        </h4>
+        <p class="text-gray-300 text-sm leading-relaxed mb-3">
+            Aunque los modelos ensemble (RF, XGB, GB) logran mayor <strong>Accuracy</strong> 
+            (81-83%), la <strong>Regresión Logística</strong> supera en las métricas críticas 
+            para este problema de negocio:
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-3 text-xs mb-4">
+            <div class="bg-gray-900/50 p-3 rounded-lg">
+                <p class="text-green-400 font-semibold mb-1">🎯 ROC-AUC Superior</p>
+                <p class="text-gray-300">0.7906 vs 0.73-0.75 de ensemble</p>
+            </div>
+            <div class="bg-gray-900/50 p-3 rounded-lg">
+                <p class="text-green-400 font-semibold mb-1">🔍 Mejor Recall</p>
+                <p class="text-gray-300">Detecta 69% de renuncias vs 24-42%</p>
+            </div>
+            <div class="bg-gray-900/50 p-3 rounded-lg">
+                <p class="text-green-400 font-semibold mb-1">💡 Interpretable</p>
+                <p class="text-gray-300">Coeficientes expresables como odds ratios</p>
+            </div>
+        </div>
+
+        <p class="text-blue-300 text-xs italic">
+            <strong>💡 Insight clave:</strong> En problemas de desbalance de clases donde el 
+            costo de NO detectar la clase minoritaria es alto (renuncias), 
+            <strong>Recall > Accuracy</strong>. Logistic Regression optimiza esta métrica 
+            manteniendo interpretabilidad para el área de RRHH.
+        </p>
+    </div>
+
+    <!-- Razones detalladas -->
+    <div class="space-y-3">
+        
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-yellow-300 font-semibold text-sm mb-2">
+                1️⃣ Superior Capacidad de Detección de Renuncias
+            </p>
+            <p class="text-gray-300 text-xs">
+                Logistic Regression identifica <strong>49 de 71 renuncias</strong> (69%), 
+                mientras que Gradient Boosting solo detecta <strong>17 de 71</strong> (24%). 
+                En un contexto de retención de talento, cada renuncia detectada permite 
+                intervención proactiva.
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-blue-300 font-semibold text-sm mb-2">
+                2️⃣ Interpretabilidad para Decisiones de Negocio
+            </p>
+            <p class="text-gray-300 text-xs">
+                Los coeficientes del modelo logístico se expresan como <strong>odds ratios</strong>, 
+                permitiendo comunicar a RRHH: "Realizar horas extra incrementa las odds de 
+                renuncia en X veces". Los modelos ensemble (caja negra) carecen de esta 
+                transparencia.
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-purple-300 font-semibold text-sm mb-2">
+                3️⃣ Balance Eficiencia-Desempeño
+            </p>
+            <p class="text-gray-300 text-xs">
+                Entrenamiento <strong>12x más rápido</strong> que Gradient Boosting (0.09s vs 1.08s) 
+                con desempeño superior. Facilita reentrenamiento frecuente con datos actualizados.
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
+            <p class="text-green-300 font-semibold text-sm mb-2">
+                4️⃣ Cumplimiento del Objetivo SMART
+            </p>
+            <p class="text-gray-300 text-xs">
+                Cumple y supera todas las metas establecidas: ROC-AUC=0.79 (≥0.75 ✓), 
+                Recall=69% (≥65% ✓), con metodología rigurosa (validación cruzada, 
+                feature selection, comparación de modelos ✓).
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- 3.6 PRINCIPALES VARIABLES PREDICTORAS                                     -->
+<!-- ============================================================================ -->
+
+<section id="section3-variables" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+        3.6 Factores Más Influyentes en la Probabilidad de Renuncia
+    </h3>
+
+    <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+        Los coeficientes del modelo logístico revelan qué variables tienen mayor impacto 
+        en la predicción de <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>. 
+        A continuación se destacan los 5 factores más influyentes:
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+        
+        <!-- Factores que AUMENTAN rotación -->
+        <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-5">
+            <h4 class="text-red-300 font-semibold text-sm mb-3">
+                🔴 Factores de RIESGO (aumentan rotación)
+            </h4>
+            <div class="space-y-3 text-xs">
+                
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-red-400 font-semibold mb-1">⏰ OverTime = Yes</p>
+                    <p class="text-gray-300">
+                        Realizar horas extra incrementa significativamente la probabilidad 
+                        de renuncia. Es el predictor más fuerte del modelo.
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-red-400 font-semibold mb-1">👤 Empleados Jóvenes</p>
+                    <p class="text-gray-300">
+                        Menor edad se asocia con mayor movilidad laboral y disposición 
+                        a explorar nuevas oportunidades.
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-red-400 font-semibold mb-1">💼 JobRole específicos</p>
+                    <p class="text-gray-300">
+                        Sales Representatives y Lab Technicians muestran mayor riesgo 
+                        de rotación que otros roles.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Factores que DISMINUYEN rotación -->
+        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-5">
+            <h4 class="text-green-300 font-semibold text-sm mb-3">
+                🟢 Factores PROTECTORES (reducen rotación)
+            </h4>
+            <div class="space-y-3 text-xs">
+                
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-green-400 font-semibold mb-1">😊 Alta Satisfacción Laboral</p>
+                    <p class="text-gray-300">
+                        Niveles altos de JobSatisfaction (3-4) reducen significativamente 
+                        la probabilidad de renuncia.
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-green-400 font-semibold mb-1">👔 Antigüedad con el Supervisor</p>
+                    <p class="text-gray-300">
+                        Mayor tiempo con el mismo manager (YearsWithCurrManager) indica 
+                        relación estable y actúa como factor protector.
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 p-3 rounded-lg">
+                    <p class="text-green-400 font-semibold mb-1">🏢 Años en la Empresa</p>
+                    <p class="text-gray-300">
+                        Mayor antigüedad (YearsAtCompany) correlaciona con compromiso 
+                        organizacional y menor intención de renuncia.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Recomendaciones accionables -->
+    <div class="bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg p-5 mt-6">
+        <h4 class="text-blue-300 font-semibold text-sm mb-3">
+            💡 Recomendaciones Accionables para RRHH
+        </h4>
+        <ul class="text-gray-300 text-xs space-y-2 list-disc list-inside">
+            <li>
+                <strong>Gestión de horas extra:</strong> Monitorear y limitar carga de 
+                trabajo adicional, especialmente en roles críticos
+            </li>
+            <li>
+                <strong>Retención temprana:</strong> Programas de engagement dirigidos a 
+                empleados con 1-3 años de antigüedad (ventana crítica)
+            </li>
+            <li>
+                <strong>Satisfacción como indicador:</strong> Encuestas periódicas de 
+                JobSatisfaction como sistema de alerta temprana
+            </li>
+            <li>
+                <strong>Estabilidad gerencial:</strong> Evitar rotación frecuente de 
+                supervisores, fortalecer relación empleado-manager
+            </li>
+            <li>
+                <strong>Intervención proactiva:</strong> Score de riesgo mensual para 
+                identificar empleados con probabilidad >0.5 de renuncia
+            </li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- ============================================================================ -->
+<!-- FIN SECCIÓN 3                                                              -->
+<!-- ============================================================================ -->
