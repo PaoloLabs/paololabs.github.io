@@ -1,299 +1,441 @@
 <section id="section1-contexto" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
+    <h2 class="text-3xl font-bold text-green-500 mb-5 border-b border-gray-700 pb-3">
+        Sección 1: Definición del Problema
+    </h2>
+
+    <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-6 mb-6">
+        <h3 class="text-xl font-bold text-green-400 mb-3">💡 Resumen Ejecutivo</h3>
+        <div class="grid md:grid-cols-3 gap-4 text-gray-300 mb-4">
+            <div class="bg-gray-900/50 p-4 rounded-lg text-center">
+                <p class="text-3xl font-bold text-red-400 mb-1">16.12%</p>
+                <p class="text-sm">Tasa de Rotación (Dataset)</p>
+            </div>
+            <div class="bg-gray-900/50 p-4 rounded-lg text-center">
+                <p class="text-3xl font-bold text-yellow-400 mb-1">84% / 16%</p>
+                <p class="text-sm">Datos sin balance (No / Sí)</p>
+            </div>
+            <div class="bg-gray-900/50 p-4 rounded-lg text-center">
+                <p class="text-3xl font-bold text-green-400 mb-1">1,470</p>
+                <p class="text-sm">Empleados en Dataset Histórico</p>
+            </div>
+        </div>
+        <p class="text-gray-300 leading-relaxed">
+            <strong>Desafío:</strong> IBM enfrenta una rotación (<i>attrition</i>) del 16.12% en su personal, un desafío
+            que afecta la estabilidad y productividad.
+        </p>
+        <p class="text-gray-300 leading-relaxed mt-2">
+            <strong>Propuesta:</strong> Desarrollar un modelo predictivo para identificar
+            los factores clave de la rotación y transformar datos en <strong>inteligencia accionable</strong> para el
+            departamento de RRHH.
+    </div>
+
+</section>
+
+<section id="section1-contexto" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
     <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
-        1. Contexto del Problema
+        1.1 Contexto y Relevancia del Problema
     </h3>
 
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        A nivel organizacional, la <strong>rotación de empleados</strong> (<i>attrition</i>) se ha convertido en uno de
-        los
-        principales desafíos de gestión del talento en las empresas modernas. De acuerdo con estudios recientes en
-        <i>People Analytics</i>, reemplazar a un trabajador puede costar entre el <strong>50% y el 200%</strong> de su
-        salario anual,
-        considerando gastos de reclutamiento, capacitación y pérdida temporal de productividad (Deloitte, 2023).
-    </p>
+    <div class="bg-red-900/20 border-l-4 border-red-500 rounded-r-lg p-5 mb-4">
+        <p class="text-red-300 font-semibold text-lg mb-2">
+            ⚠️ El Costo Oculto de la Rotación
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+            La rotación voluntaria cuesta a las empresas miles de millones anualmente. Estudios de la <strong>Society
+                for Human Resource Management (SHRM)</strong> estiman que el costo directo de reemplazar a un empleado
+            puede oscilar entre el <strong>50% y 200% de su salario anual</strong>, dependiendo del rol.
+        </p>
+    </div>
 
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        En la actualidad, las organizaciones buscan adoptar un enfoque <strong>basado en datos</strong> para entender
-        las causas
-        detrás de la rotación, identificar patrones tempranos de riesgo y fortalecer la retención del talento clave.
-        Variables como la <strong>satisfacción laboral, el balance vida-trabajo, el reconocimiento y las oportunidades
-            de crecimiento</strong>
-        influyen directamente en la decisión de un empleado de permanecer o abandonar una empresa (Kumar & Mathimaran,
-        2017; Velasco, 2024).
+        <strong>Problema principal:</strong> IBM detecta renuncias de manera <i>reactiva</i>.
+        No existe capacidad sistemática para identificar empleados en riesgo, entender factores
+        causales, ni implementar intervenciones proactivas.
     </p>
 
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Sin embargo, las decisiones en el área de Recursos Humanos suelen apoyarse en criterios subjetivos o en
-        mediciones aisladas, lo que impide una comprensión integral del fenómeno. El uso de <strong>modelos estadísticos
-            y de
-            machine learning supervisado</strong> permite analizar múltiples variables simultáneamente y estimar la
-        probabilidad de rotación
-        de manera cuantitativa, mejorando la objetividad y la capacidad predictiva de las estrategias de retención.
-    </p>
+    <div class="bg-gray-900/50 p-5 rounded-lg mb-4">
+        <h4 class="text-lg font-semibold text-green-400 mb-3">📊 Situación actual (Datos de IBM):</h4>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start space-x-3">
+                <span class="text-2xl">👥</span>
+                <div>
+                    <p class="font-semibold text-white">1,470 empleados analizados</p>
+                    <p class="text-gray-400">Dataset histórico (Kaggle, ~2022)</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-3">
+                <span class="text-2xl">📉</span>
+                <div>
+                    <p class="font-semibold text-white">237 renuncias (16.12%)</p>
+                    <p class="text-gray-400">Tasa observada en los datos</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <p class="text-lg text-gray-300 leading-relaxed">
-        En este contexto, el presente proyecto propone analizar un conjunto de datos de empleados, aplicando técnicas
-        de modelamiento predictivo para determinar <strong>qué factores explican con mayor peso la probabilidad de
-            renuncia</strong>,
-        con el fin de aportar evidencia empírica a la toma de decisiones estratégicas en gestión del talento humano.
-    </p>
+    <div class="bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg p-5">
+        <p class="text-blue-300 font-semibold mb-2">🎯 La Oportunidad (Inteligencia Accionable):</p>
+        <p class="text-gray-300">
+            Los datos históricos contienen patrones que <strong>pueden predecir</strong> la rotación.
+            Un modelo analítico transforma estos datos en <strong>inteligencia accionable</strong> (insights que RRHH
+            puede usar para crear tácticas de retención precisas).
+        </p>
+    </div>
 
 </section>
 
 <section id="section1-pregunta" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
     <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
-        2. Pregunta de Investigación
+        1.2 Pregunta de Investigación
     </h3>
 
-    <p class="text-lg mb-4 italic text-gray-400 leading-relaxed">
-        “¿En qué medida factores como la <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>), el
-        <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) y el
-        <strong>desempeño</strong> (<code>PerformanceRating</code>) influyen en la
-        probabilidad de rotación (<code>Attrition</code>) de los empleados dentro de la organización?”
-    </p>
+    <div class="bg-purple-900/30 border-l-4 border-purple-400 rounded-r-lg p-6 mb-4">
+        <p class="text-xl italic text-gray-200 leading-relaxed">
+            "¿Qué factores (como horas extras, satisfacción laboral, rol, frecuencia de viajes
+            y estado civil) tienen mayor influencia en la probabilidad de que un empleado renuncie?"
+        </p>
+    </div>
 
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Esta pregunta busca identificar las relaciones más relevantes entre variables laborales,
-        demográficas y de satisfacción, con el fin de comprender las causas subyacentes del abandono
-        de personal. El análisis pretende transformar un problema de gestión del talento en un
-        <strong>reto analítico medible</strong>, utilizando información disponible en el conjunto de datos de empleados.
-    </p>
+    <div class="bg-gray-900/50 p-5 rounded-lg mb-4 border border-gray-700">
+        <h4 class="text-lg font-semibold text-green-400 mb-3">📁 Datos: IBM HR Employee Attrition</h4>
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+            <div class="flex justify-between bg-gray-800/50 p-3 rounded">
+                <span class="text-gray-400">Empleados:</span>
+                <span class="font-bold text-green-400">1,470</span>
+            </div>
+            <div class="flex justify-between bg-gray-800/50 p-3 rounded">
+                <span class="text-gray-400">Variables:</span>
+                <span class="font-bold text-blue-400">35</span>
+            </div>
+            <div class="flex justify-between bg-gray-800/50 p-3 rounded">
+                <span class="text-gray-400">Período:</span>
+                <span class="font-bold text-purple-400">Histórico (Kaggle ~2022)</span>
+            </div>
+            <div class="flex justify-between bg-gray-800/50 p-3 rounded">
+                <span class="text-gray-400">Objetivo (Desbalance):</span>
+                <span class="font-bold text-yellow-400">16.12% Renuncia (Yes)</span>
+            </div>
+        </div>
+    </div>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables consideradas</h4>
+    <h4 class="text-xl font-semibold text-green-400 mb-3">📋 Categorías de Información:</h4>
+    <div class="grid md:grid-cols-3 gap-4">
 
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li><strong>Variable objetivo:</strong> <code>Attrition</code> — Estado del empleado (permanece / renuncia /
-            desvinculado).</li>
-        <li><strong>Variables demográficas:</strong> Edad (<code>Age</code>), género (<code>Gender</code>),
-            estado civil (<code>MaritalStatus</code>), nivel educativo (<code>Education</code>) y campo de estudio
-            (<code>EducationField</code>).</li>
-        <li><strong>Variables laborales:</strong> Departamento (<code>Department</code>), rol (<code>JobRole</code>),
-            años en la empresa (<code>YearsAtCompany</code>), nivel de trabajo (<code>JobLevel</code>), horas extras
-            (<code>OverTime</code>),
-            número de promociones (<code>YearsSinceLastPromotion</code>) y distancia desde el hogar
-            (<code>DistanceFromHome</code>).</li>
-        <li><strong>Variables de satisfacción y desempeño:</strong> Satisfacción laboral (<code>JobSatisfaction</code>),
-            involucramiento (<code>JobInvolvement</code>), evaluación de desempeño (<code>PerformanceRating</code>),
-            satisfacción con el entorno (<code>EnvironmentSatisfaction</code>) y equilibrio trabajo–vida
-            (<code>WorkLifeBalance</code>).</li>
-        <li><strong>Variables económicas:</strong> Ingreso mensual (<code>MonthlyIncome</code>), aumento salarial
-            porcentual (<code>PercentSalaryHike</code>),
-            y nivel de participación accionaria (<code>StockOptionLevel</code>).</li>
-    </ul>
+        <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+            <h5 class="font-semibold text-blue-300 mb-2">👤 Demográficas</h5>
+            <p class="text-gray-300 text-sm">
+                Edad, género, estado civil, educación, distancia
+            </p>
+        </div>
 
-    <p class="text-lg text-gray-300 leading-relaxed">
-        Con base en estas dimensiones, se espera obtener evidencia empírica sobre los factores que
-        influyen en la rotación de empleados y establecer una base sólida para el modelamiento
-        predictivo que se desarrollará en las siguientes secciones.
-    </p>
+        <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+            <h5 class="font-semibold text-purple-300 mb-2">💼 Laborales</h5>
+            <p class="text-gray-300 text-sm">
+                Rol, departamento, nivel, años, horas extra, viajes
+            </p>
+        </div>
+
+        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+            <h5 class="font-semibold text-green-300 mb-2">😊 Satisfacción</h5>
+            <p class="text-gray-300 text-sm">
+                Laboral, ambiental, involucramiento, balance
+            </p>
+        </div>
+
+    </div>
 
 </section>
 
 <section id="section1-objetivo" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
     <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
-        3. Objetivo Analítico (SMART)
+        1.3 Objetivo Analítico (SMART)
     </h3>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Specific (Específico)</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Evaluar la relación entre la <strong>rotación de empleados</strong> (<code>Attrition</code>) y un conjunto de
-        variables
-        demográficas (<code>Age</code>, <code>Gender</code>, <code>MaritalStatus</code>), laborales
-        (<code>Department</code>, <code>JobRole</code>, <code>YearsAtCompany</code>, <code>OverTime</code>),
-        de satisfacción (<code>JobSatisfaction</code>, <code>WorkLifeBalance</code>) y desempeño
-        (<code>PerformanceRating</code>), a fin de identificar los principales factores asociados a la decisión
-        de permanencia o renuncia dentro de la organización.
-    </p>
+    <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-6 mb-6">
+        <p class="text-lg text-gray-200 leading-relaxed">
+            <strong class="text-green-400">Meta:</strong>
+            Evaluar la relación entre rotación y variables disponibles mediante Regresión Logística Binaria,
+            identificando factores influyentes y alcanzando capacidad predictiva (ROC-AUC) ≥ 0.75.
+        </p>
+    </div>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Measurable (Medible)</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Construir y validar un modelo de <strong>clasificación supervisada</strong> que permita estimar la probabilidad
-        de rotación de empleados. Se evaluará su desempeño mediante métricas cuantitativas de clasificación:
-    </p>
+    <div class="space-y-4">
 
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li><strong>Accuracy</strong>: proporción total de predicciones correctas.</li>
-        <li><strong>Precision</strong> y <strong>Recall</strong>: balance entre falsos positivos y negativos.</li>
-        <li><strong>F1-score</strong>: métrica principal de éxito, con una meta ≥ <strong>0.80</strong>.</li>
-    </ul>
+        <div class="bg-gray-900/50 p-5 rounded-lg border-l-4 border-blue-400">
+            <h4 class="text-lg font-semibold text-blue-300 mb-2">
+                <span class="mr-2">S</span> Específico (Specific)
+            </h4>
+            <p class="text-gray-300 leading-relaxed">
+                <strong>Se evaluará</strong> la relación entre rotación (<code
+                    class="bg-gray-700 px-2 py-1 rounded">Attrition</code>: Yes/No)
+                y variables demográficas, laborales y de satisfacción, mediante
+                <strong>Regresión Logística Binaria</strong>.
+                <strong>Se identificarán</strong> los 5-10 factores más influyentes.
+            </p>
+        </div>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Achievable (Alcanzable)</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        El análisis se desarrollará utilizando herramientas reproducibles del ecosistema de <strong>Python</strong>
-        (<code>pandas</code>, <code>scikit-learn</code>, <code>matplotlib</code>, <code>seaborn</code>,
-        <code>plotly</code>).
-        El dataset (<code>HREmployee_data.csv</code>) cuenta con un tamaño adecuado para entrenamiento y prueba,
-        permitiendo aplicar modelos de regresión logística, Random Forest y XGBoost sin limitaciones computacionales
-        significativas.
-    </p>
+        <div class="bg-gray-900/50 p-5 rounded-lg border-l-4 border-green-400">
+            <h4 class="text-lg font-semibold text-green-300 mb-2">
+                <span class="mr-2">M</span> Medible (Measurable)
+            </h4>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Relevant (Relevante)</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Este análisis aporta valor estratégico al área de Recursos Humanos al transformar datos históricos en
-        <strong>insights accionables</strong> que orienten políticas de retención de talento, reducción de costos de
-        rotación y mejora del clima organizacional. Además, promueve el uso ético y transparente de la analítica
-        dentro de los procesos de gestión del talento.
-    </p>
+            <p class="text-gray-300 mb-3">
+                Se estimarán los coeficientes $\beta_i$ del modelo mediante <strong>Maximum Likelihood Estimation
+                    (MLE)</strong>. Se evaluará la significancia de cada coeficiente con $\alpha = 0.05$.
+            </p>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Time-bound (Temporal)</h4>
-    <p class="text-lg text-gray-300 leading-relaxed">
-        El proyecto se desarrollará durante el <strong>Sprint 1</strong> de la asignatura <i>Modelamiento de Datos
-            I</i>,
-        entregando un análisis reproducible y visualizaciones explicativas en un sitio web académico
-        (<i>Google Sites</i> o <i>GitHub Pages</i>). Los resultados del modelo y su validación se presentarán
-        en la defensa plenaria correspondiente.
-    </p>
+            <div class="bg-gray-800/50 p-4 rounded-lg mb-3">
+                <h5 class="text-md font-semibold text-green-400 mb-2">¿Qué es MLE? (Estimación de Máxima Verosimilitud)
+                </h5>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Es el método que usa la Regresión Logística para encontrar los coeficientes ($\beta_i$) óptimos. MLE
+                    maximiza la "verosimilitud": la probabilidad de que el modelo, con esos coeficientes, haya producido
+                    los datos que observamos (los 237 "Sí" y 1233 "No").
+                </p>
+                <p class="text-sm text-gray-400 leading-relaxed mt-2">
+                    La función que se maximiza (Log-Likelihood) es:
+                </p>
+                <div class="text-center text-lg my-4 p-3 bg-gray-900 rounded-md overflow-x-auto">
+                    $$ \ell(\beta) = \sum_{i=1}^{N} [y_i \log(p_i) + (1-y_i) \log(1-p_i)] $$
+                </div>
+            </div>
 
+            <p class="text-gray-300 mb-2">
+                El rendimiento predictivo se medirá con <strong>ROC-AUC</strong>, la métrica clave para datos
+                desbalanceados (16% vs 84%), ya que mide la capacidad del modelo para discriminar entre clases.
+            </p>
+        </div>
+
+        <div class="bg-gray-900/50 p-5 rounded-lg border-l-4 border-purple-400">
+            <h4 class="text-lg font-semibold text-purple-300 mb-2">
+                <span class="mr-2">A</span> Alcanzable (Achievable)
+            </h4>
+            <p class="text-gray-300 mb-2"><strong>Se desarrollará</strong> utilizando:</p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+                <li>Datos: `IBMEmployee_data.csv` (n=1,470)</li>
+                <li>Herramientas: Python (pandas, scikit-learn, statsmodels)</li>
+                <li>Validación: Test set (30%)</li>
+                <li>Desbalance: `class_weight='balanced'`</li>
+            </ul>
+        </div>
+
+        <div class="bg-gray-900/50 p-5 rounded-lg border-l-4 border-yellow-400">
+            <h4 class="text-lg font-semibold text-yellow-300 mb-2">
+                <span class="mr-2">R</span> Relevante (Relevant)
+            </h4>
+            <p class="text-gray-300 text-sm mb-2">
+                <strong>Impacto de negocio esperado:</strong>
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+                <li>Identificación temprana de empleados en riesgo.</li>
+                <li>Políticas de retención basadas en evidencia (datos) y no en intuición.</li>
+                <li>Proyección de un alto <strong>Retorno de la Inversión (ROI)</strong> en los programas de retención.
+                </li>
+            </ul>
+
+            <div class="bg-gray-800/50 p-4 rounded-lg mt-3">
+                <h5 class="text-md font-semibold text-yellow-400 mb-2">¿Qué es ROI? (Retorno de la Inversión)</h5>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Es una métrica financiera: (Ganancias - Costos) / Costos. En este proyecto, si el costo de un
+                    programa de retención.
+
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-gray-900/50 p-5 rounded-lg border-l-4 border-red-400">
+            <h4 class="text-lg font-semibold text-red-300 mb-2">
+                <span class="mr-2">T</span> Temporal (Time-bound)
+            </h4>
+            <p class="text-gray-300 text-sm">
+                <strong>Sprint 1</strong> (Noviembre 2025): Entrega de modelo base, código reproducible, sitio web y
+                presentación final.
+            </p>
+        </div>
+
+    </div>
 </section>
 
 <section id="section1-alcance" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
     <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
-        4. Delimitación del Alcance
+        1.4 Alcance del Análisis
     </h3>
 
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        El presente análisis se centra en comprender y predecir los factores que inciden en la
-        <strong>rotación de empleados</strong> (<code>Attrition</code>) dentro de una organización.
-        Para ello, se utiliza el dataset <code>HREmployee_data.csv</code>, que contiene variables
-        demográficas, laborales, de desempeño, satisfacción y compensación económica.
+        <strong>Se analizarán</strong> las 35 variables disponibles según el Data Dictionary.
     </p>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables Incluidas</h4>
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li><strong>Variable objetivo:</strong> Estado del empleado (<code>Attrition</code>) — clasifica si el
-            colaborador permanece, renuncia voluntariamente o fue desvinculado.</li>
-        <li><strong>Satisfacción laboral</strong> (<code>JobSatisfaction</code>) — nivel de satisfacción general del
-            empleado con su trabajo.</li>
-        <li><strong>Equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) — percepción del balance entre las
-            responsabilidades laborales y personales.</li>
-        <li><strong>Desempeño</strong> (<code>PerformanceRating</code>) — evaluación del rendimiento otorgada por el
-            supervisor directo.</li>
-        <li><strong>Horas extras</strong> (<code>OverTime</code>) — indica si el empleado realiza trabajo adicional
-            fuera de su jornada habitual.</li>
-        <li><strong>Años en la empresa</strong> (<code>YearsAtCompany</code>) — tiempo total de permanencia del empleado
-            en la organización.</li>
-        <li><strong>Departamento</strong> (<code>Department</code>) — área o división funcional donde trabaja el
-            empleado.</li>
-        <li><strong>Rol o puesto</strong> (<code>JobRole</code>) — cargo o función específica desempeñada dentro del
-            departamento.</li>
-        <li><strong>Edad</strong> (<code>Age</code>) — años cumplidos por el empleado.</li>
-        <li><strong>Género</strong> (<code>Gender</code>) — categoría binaria (masculino o femenino).</li>
-        <li><strong>Estado civil</strong> (<code>MaritalStatus</code>) — situación familiar (soltero, casado o
-            divorciado).</li>
-        <li><strong>Nivel educativo</strong> (<code>Education</code>) — máximo nivel de formación alcanzado.</li>
-        <li><strong>Satisfacción con el entorno</strong> (<code>EnvironmentSatisfaction</code>) — percepción del
-            ambiente físico y social de trabajo.</li>
-        <li><strong>Distancia desde el hogar</strong> (<code>DistanceFromHome</code>) — distancia entre el domicilio del
-            empleado y la oficina (en km).</li>
-        <li><strong>Ingreso mensual</strong> (<code>MonthlyIncome</code>) — remuneración bruta promedio mensual del
-            empleado.</li>
-    </ul>
+    <div class="bg-yellow-900/20 border-l-4 border-yellow-400 rounded-r-lg p-5 mb-4">
+        <h4 class="text-lg font-semibold text-yellow-300 mb-2">🔍 Proceso de Selección</h4>
+        <p class="text-gray-300 text-sm mb-2">
+            <strong>Se aplicará</strong> <i>feature selection</i> riguroso considerando:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+            <li><strong>Significancia estadística:</strong> p-value < 0.05 (de `statsmodels`)</li>
+            <li><strong>Multicolinealidad:</strong> Eliminar variables correlacionadas (|r| > 0.7)</li>
+            <li><strong>Relevancia de negocio:</strong> Conocimiento experto RRHH</li>
+        </ul>
+    </div>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Variables Excluidas</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Se excluyeron variables redundantes o derivadas con riesgo de <i>data leakage</i>, como
-        <strong>Edad al comenzar a trabajar</strong> (<code>AgeStartedWorking</code>),
-        <strong>Experiencia total</strong> (<code>TotalWorkingYears</code>) y
-        <strong>Antigüedad promedio</strong> (<code>AverageTenure</code>),
-        debido a que pueden anticipar directamente la variable objetivo.
-        Asimismo, se eliminaron variables de identificación personal (<code>EmployeeNumber</code>,
-        <code>ApplicationID</code>) por no aportar valor predictivo.
-    </p>
-
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Periodo y Cobertura</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        El conjunto de datos proviene de registros internos anonimizados de empleados, con cobertura
-        suficiente para capturar patrones de comportamiento laboral. Cada observación
-        corresponde a un individuo único, sin repetición temporal, por lo que el análisis se
-        considerará <strong>transversal</strong> (cross-sectional).
-    </p>
-
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Limitaciones Éticas</h4>
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li>Todos los datos están completamente anonimizados y no contienen información personal sensible.</li>
-        <li>El análisis tiene un propósito estrictamente académico y evita cualquier uso discriminatorio o sesgado.</li>
-        <li>Las predicciones se interpretan como apoyo a la toma de decisiones, no como mecanismos automáticos de
-            selección o despido.</li>
-    </ul>
-
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Limitaciones de Recursos</h4>
-    <p class="text-lg text-gray-300 leading-relaxed">
-        El modelamiento se desarrollará en <strong>Python</strong>, empleando librerías de código abierto
-        (<code>pandas</code>, <code>scikit-learn</code>, <code>matplotlib</code>, <code>plotly</code>).
-        El procesamiento y las visualizaciones se ejecutarán en un entorno local controlado,
-        con recursos computacionales moderados pero suficientes para aplicar validación cruzada
-        y comparar el rendimiento entre modelos de complejidad media
-        (Regresión Logística, Random Forest, XGBoost).
-    </p>
+    <h4 class="text-xl font-semibold text-red-400 mb-3">⚠️ Limitaciones</h4>
+    <div class="grid md:grid-cols-2 gap-3">
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
+            <p class="font-semibold text-red-300 text-sm mb-1">Éticas:</p>
+            <p class="text-gray-300 text-xs">Datos anonimizados, uso académico. El modelo final debe ser auditado para
+                evitar sesgos (fairness).</p>
+        </div>
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
+            <p class="font-semibold text-red-300 text-sm mb-1">Técnicas:</p>
+            <p class="text-gray-300 text-xs">El fuerte desbalance (16.12% vs 83.88%) es el principal desafío técnico,
+                requiriendo métricas como ROC-AUC y técnicas de balanceo.</p>
+        </div>
+    </div>
 
 </section>
 
 <section id="section1-hipotesis" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
 
     <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
-        5. Hipótesis y Criterio de Éxito
+        1.5 Hipótesis a Evaluar
     </h3>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-4 mb-2">Hipótesis Nula (H₀)</h4>
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        No existe una relación estadísticamente significativa entre las variables laborales, demográficas y de
-        satisfacción
-        —como <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>),
-        <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>),
-        <strong>desempeño</strong> (<code>PerformanceRating</code>),
-        <strong>horas extras</strong> (<code>OverTime</code>) y
-        <strong>años en la empresa</strong> (<code>YearsAtCompany</code>)—
-        y la probabilidad de rotación de empleados (<code>Attrition</code>).
+        Basándonos en la literatura y el análisis exploratorio, se plantean las siguientes hipótesis:
     </p>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-2">Hipótesis Alternativa (H₁)</h4>
+    <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+            <div class="flex items-start mb-2">
+                <span class="text-2xl mr-2">⏰</span>
+                <p class="text-lg font-semibold text-green-300">H₁: Horas Extra</p>
+            </div>
+            <p class="text-gray-300 text-sm mb-1">
+                Trabajo en horas extra (`OverTime`) estará <strong>positivamente asociado</strong> con rotación.
+            </p>
+        </div>
+        <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+            <div class="flex items-start mb-2">
+                <span class="text-2xl mr-2">💼</span>
+                <p class="text-lg font-semibold text-blue-300">H₂: Rol</p>
+            </div>
+            <p class="text-gray-300 text-sm mb-1">
+                <strong>Sales Reps</strong> y <strong>Lab Technicians</strong> mostrarán mayor rotación.
+            </p>
+        </div>
+        <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+            <div class="flex items-start mb-2">
+                <span class="text-2xl mr-2">💑</span>
+                <p class="text-lg font-semibold text-purple-300">H₃: Estado Civil</p>
+            </div>
+            <p class="text-gray-300 text-sm mb-1">
+                Empleados <strong>solteros</strong> tendrán mayor movilidad laboral.
+            </p>
+        </div>
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4">
+            <div class="flex items-start mb-2">
+                <span class="text-2xl mr-2">✈️</span>
+                <p class="text-lg font-semibold text-yellow-300">H₄: Viajes</p>
+            </div>
+            <p class="text-gray-300 text-sm mb-1">
+                <strong>Viajes frecuentes</strong> estarán asociados con mayor rotación.
+            </p>
+        </div>
+        <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+            <div class="flex items-start mb-2">
+                <span class="text-2xl mr-2">😊</span>
+                <p class="text-lg font-semibold text-red-300">H₅: Satisfacción</j </div>
+                <p class="text-gray-300 text-sm mb-1">
+                    Mayor <strong>satisfacción</strong> estará <strong>negativamente asociada</strong> con rotación.
+                </p>
+            </div>
+            <div class="bg-indigo-900/20 border border-indigo-500/30 rounded-lg p-4">
+                <div class="flex items-start mb-2">
+                    <span class="text-2xl mr-2">👔</span>
+                    <p class="text-lg font-semibold text-indigo-300">H₆: Jefe Actual</p>
+                </div>
+                <p class="text-gray-300 text-sm mb-1">
+                    Más <strong>años con jefe</strong> reducirán probabilidad de rotación.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-gray-900/50 border-l-4 border-green-400 rounded-r-lg p-4">
+            <h4 class="text-lg font-semibold text-green-400 mb-2">📊 Hipótesis Estadísticas</h4>
+            <p class="text-gray-300 mb-2 text-sm">
+                Para cada variable (ej. `OverTime`), probaremos:
+            </p>
+            <div class="space-y-2 text-sm">
+                <div>
+                    <p class="font-semibold text-gray-300">H₀ (Nula):</p>
+                    <p class="text-gray-400">El coeficiente de la variable es cero (no tiene impacto). $(\beta_i = 0)$
+                    </p>
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-300">H₁ (Alternativa):</p>
+                    <p class="text-gray-400">El coeficiente es distinto de cero (sí tiene impacto). $(\beta_i \neq 0)$
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+</section>
+
+<section id="section1-criterios" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-3 border-b border-gray-700 pb-2">
+        1.6 Criterios de Éxito
+    </h3>
+
     <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        Existe una relación estadísticamente significativa entre al menos una de las variables independientes
-        (<code>JobSatisfaction</code>, <code>WorkLifeBalance</code>, <code>PerformanceRating</code>,
-        <code>OverTime</code>, <code>YearsAtCompany</code>, etc.)
-        y la probabilidad de rotación de empleados (<code>Attrition</code>),
-        indicando que estos factores influyen de manera medible en la decisión de abandonar la organización.
+        El sprint será exitoso si el modelo final cumple los siguientes criterios cuantitativos y cualitativos:
     </p>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Supuestos Esperados</h4>
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li>Una menor <strong>satisfacción laboral</strong> (<code>JobSatisfaction</code>) incrementa la probabilidad de
-            rotación.</li>
-        <li>Un bajo <strong>equilibrio vida–trabajo</strong> (<code>WorkLifeBalance</code>) se asocia con una mayor tasa
-            de abandono.</li>
-        <li>El trabajo en <strong>horas extras frecuentes</strong> (<code>OverTime</code>) contribuye a una mayor
-            probabilidad de renuncia.</li>
-        <li>Una <strong>mayor antigüedad</strong> (<code>YearsAtCompany</code>) tiende a disminuir la probabilidad de
-            rotación.</li>
-        <li>Un <strong>alto desempeño</strong> (<code>PerformanceRating</code>) podría correlacionarse con una menor
-            rotación voluntaria.</li>
-    </ul>
+    <h4 class="text-xl font-semibold text-green-400 mb-3">📊 Cuantitativos (Métricas de Clasificación)</h4>
+    <div class="bg-gray-900/50 border border-gray-700 rounded-lg overflow-hidden mb-6">
+        <table class="w-full text-sm text-gray-300">
+            <thead class="bg-gray-800 border-b border-gray-700">
+                <tr>
+                    <th class="text-left py-2 px-3 text-green-300">Métrica</th>
+                    <th class="text-center py-2 px-3 text-green-300">Umbral</th>
+                    <th class="text-left py-2 px-3 text-green-300">Interpretación</th>
+                </tr>
+            </thead>
+            <tbody class="text-xs">
+                <tr class="border-b border-gray-800">
+                    <td class="py-2 px-3 font-semibold">ROC-AUC</td>
+                    <td class="text-center py-2 px-3 text-green-400 font-bold">≥ 0.75</td>
+                    <td class="py-2 px-3">Buena capacidad discriminativa (clave por desbalance)</td>
+                </tr>
+                <tr class="border-b border-gray-800">
+                    <td class="py-2 px-3 font-semibold">Recall (para 'Yes')</td>
+                    <td class="text-center py-2 px-3 text-green-400 font-bold">≥ 65%</td>
+                    <td class="py-2 px-3">Detectar al menos al 65% de los que SÍ renunciarán</td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-3 font-semibold">Significancia (p-value)</td>
+                    <td class="text-center py-2 px-3 text-green-400 font-bold">
+                        < 0.05</td>
+                    <td class="py-2 px-3">Al menos 5 variables deben ser estadísticamente significativas</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <h4 class="text-xl font-semibold text-green-400 mt-6 mb-3">Criterio de Éxito</h4>
-    <p class="text-lg mb-4 text-gray-300 leading-relaxed">
-        El modelo propuesto será considerado exitoso si cumple los siguientes criterios cuantitativos y cualitativos:
-    </p>
-
-    <ul class="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-2">
-        <li><strong>Precisión (Accuracy)</strong> superior al <strong>80%</strong> en los datos de validación.</li>
-        <li><strong>F1-score</strong> mayor o igual a <strong>0.80</strong>, como métrica principal de equilibrio entre
-            precisión y sensibilidad.</li>
-        <li><strong>Significancia estadística</strong> de los predictores relevantes (p &lt; 0.05 en el modelo base de
-            regresión logística).</li>
-        <li><strong>Interpretabilidad</strong> adecuada mediante coeficientes o importancia de variables, permitiendo su
-            explicación a los tomadores de decisión.</li>
-        <li><strong>Reproducibilidad</strong> del análisis a través de código transparente y datos bien documentados.
-        </li>
-    </ul>
-
-    <p class="text-lg text-gray-300 leading-relaxed">
-        El cumplimiento de estos criterios garantizará que el modelo no solo logre un desempeño predictivo sólido,
-        sino que además aporte <strong>valor explicativo y estratégico</strong> a la gestión del talento humano en la
-        organización.
-    </p>
-
+    <h4 class="text-xl font-semibold text-purple-400 mb-3">🎯 Cualitativos</h4>
+    <div class="grid md:grid-cols-2 gap-3">
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
+            <p class="font-semibold text-purple-300 text-sm mb-1">📖 Interpretabilidad</A>
+            <p class="text-gray-300 text-xs">Coeficientes interpretables como Odds Ratios, explicables a RRHH.</p>
+        </div>
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
+            <p class="font-semibold text-purple-300 text-sm mb-1">🎬 Accionabilidad</p>
+            <p class="text-gray-300 text-xs">Insights traducibles en políticas de retención concretas.</p>
+        </div>
+    </div>
 </section>
