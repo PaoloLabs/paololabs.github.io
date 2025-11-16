@@ -11,7 +11,7 @@
     <!-- RESUMEN EJECUTIVO -->
     <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-6 mb-6">
         <h3 class="text-xl font-bold text-green-400 mb-3">💡 Resumen Ejecutivo</h3>
-        
+
         <div class="grid md:grid-cols-3 gap-4 mb-4">
             <div class="bg-gray-900/50 p-4 rounded-lg text-center">
                 <p class="text-3xl font-bold text-red-400 mb-1">16.12%</p>
@@ -26,15 +26,15 @@
                 <p class="text-sm text-gray-300">Total empleados</p>
             </div>
         </div>
-        
+
         <p class="text-gray-300 text-sm leading-relaxed mb-3">
-            <strong>🎯 Objetivo:</strong> Predecir qué empleados renunciarán usando Regresión Logística, 
+            <strong>🎯 Objetivo:</strong> Predecir qué empleados renunciarán usando Regresión Logística,
             alcanzando un ROC-AUC ≥ 0.75 y detectando al menos el 65% de las renuncias.
         </p>
-        
+
         <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg p-3">
             <p class="text-blue-300 text-sm">
-                <strong>✅ Resultado alcanzado:</strong> ROC-AUC = <strong class="text-green-400">0.7906</strong>, 
+                <strong>✅ Resultado alcanzado:</strong> ROC-AUC = <strong class="text-green-400">0.7906</strong>,
                 Recall = <strong class="text-green-400">69%</strong> (detecta 49 de 71 renuncias en test set).
             </p>
         </div>
@@ -62,8 +62,8 @@
     </div>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Actualmente las empresas detectan las renuncias de forma <strong>reactiva</strong> (cuando ya ocurrieron). 
-        Este proyecto desarrolla un modelo <strong>predictivo</strong> que identifica empleados en riesgo 
+        Actualmente las empresas detectan las renuncias de forma <strong>reactiva</strong> (cuando ya ocurrieron).
+        Este proyecto desarrolla un modelo <strong>predictivo</strong> que identifica empleados en riesgo
         antes de que renuncien, permitiendo intervenciones proactivas de retención.
     </p>
 
@@ -103,8 +103,7 @@
 
     <div class="bg-blue-900/30 border-l-4 border-blue-400 rounded-r-lg p-5 mb-4">
         <p class="text-blue-200 font-semibold text-lg mb-2">
-            ¿Qué factores predicen la probabilidad de renuncia de empleados y cómo se pueden 
-            cuantificar mediante un modelo estadístico?
+            ¿Qué factores aumentan el riesgo de renuncia y cómo cuantificar su impacto en la retención?
         </p>
         <p class="text-gray-300 text-xs">
             <strong>Tipo:</strong> Pregunta predictiva con enfoque inferencial
@@ -115,11 +114,11 @@
         <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
             <p class="text-green-400 font-semibold text-sm mb-2">🎯 Variable Objetivo</p>
             <p class="text-gray-300 text-xs">
-                <code class="bg-gray-700 px-2 py-1 rounded text-yellow-400">Attrition</code> 
+                <code class="bg-gray-700 px-2 py-1 rounded text-yellow-400">Attrition</code>
                 (binaria: Yes/No) - Indica si el empleado renunció
             </p>
         </div>
-        
+
         <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
             <p class="text-green-400 font-semibold text-sm mb-2">📊 Variables Predictoras</p>
             <p class="text-gray-300 text-xs">
@@ -142,11 +141,11 @@
 
     <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-5 mb-6">
         <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-            <strong>Evaluar</strong> la relación entre rotación de empleados y variables disponibles 
-            mediante <strong>Regresión Logística Binaria</strong>, identificando los factores más 
+            <strong>Evaluar</strong> la relación entre rotación de empleados y variables disponibles
+            mediante <strong>Regresión Logística Binaria</strong>, identificando los factores más
             influyentes y alcanzando capacidad predictiva de <strong>ROC-AUC ≥ 0.75</strong>.
         </p>
-        
+
         <div class="grid grid-cols-3 gap-3 text-center">
             <div class="bg-gray-900/50 p-3 rounded-lg">
                 <p class="text-2xl font-bold text-green-400">0.79</p>
@@ -168,14 +167,14 @@
 
     <!-- Desglose SMART compacto -->
     <div class="space-y-3">
-        
+
         <!-- SPECIFIC -->
         <div class="bg-gray-900/50 border-l-4 border-blue-400 rounded-r-lg p-4">
             <p class="text-blue-300 font-semibold text-sm mb-1">
                 <span class="mr-2">S</span> Específico
             </p>
             <p class="text-gray-300 text-xs">
-                Evaluar <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code> 
+                Evaluar <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>
                 (Yes/No) con Regresión Logística. Identificar 5-10 factores clave mediante odds ratios.
             </p>
         </div>
@@ -199,7 +198,7 @@
                 <span class="mr-2">A</span> Alcanzable
             </p>
             <p class="text-gray-300 text-xs">
-                Dataset: 1,470 empleados | Herramientas: Python (scikit-learn, statsmodels) | 
+                Dataset: 1,470 empleados | Herramientas: Python (scikit-learn, statsmodels) |
                 Validación: 5-fold CV + test 30% | Desbalance: class_weight='balanced'
             </p>
         </div>
@@ -210,7 +209,7 @@
                 <span class="mr-2">R</span> Relevante
             </p>
             <p class="text-gray-300 text-xs">
-                Permite identificación temprana de empleados en riesgo, diseño de políticas de 
+                Permite identificación temprana de empleados en riesgo, diseño de políticas de
                 retención basadas en evidencia y comprensión de factores causales de rotación.
             </p>
         </div>
@@ -240,12 +239,12 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Se espera encontrar que los siguientes factores influyen significativamente en la 
+        Se espera encontrar que los siguientes factores influyen significativamente en la
         probabilidad de renuncia:
     </p>
 
     <div class="grid md:grid-cols-2 gap-3">
-        
+
         <!-- H1 -->
         <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
             <p class="text-sm font-semibold text-green-300 mb-1">
@@ -321,13 +320,13 @@
     </h3>
 
     <div class="bg-green-900/30 border-l-4 border-green-400 rounded-r-lg p-5">
-        
+
         <p class="text-gray-300 text-sm mb-4">
             El Sprint 1 se considera <strong>exitoso</strong> si cumple:
         </p>
-        
+
         <div class="grid md:grid-cols-3 gap-4 text-center mb-4">
-            
+
             <div class="bg-gray-900/50 p-4 rounded-lg">
                 <p class="text-4xl mb-2">✅</p>
                 <p class="text-sm font-semibold text-green-300">Métricas</p>
@@ -335,7 +334,7 @@
                 <p class="text-xs text-gray-400">Recall ≥ 65%</p>
                 <p class="text-xs text-green-400 font-semibold mt-1">✓ Cumplido</p>
             </div>
-            
+
             <div class="bg-gray-900/50 p-4 rounded-lg">
                 <p class="text-4xl mb-2">✅</p>
                 <p class="text-sm font-semibold text-green-300">Metodología</p>
@@ -343,7 +342,7 @@
                 <p class="text-xs text-gray-400">Validación cruzada</p>
                 <p class="text-xs text-green-400 font-semibold mt-1">✓ Cumplido</p>
             </div>
-            
+
             <div class="bg-gray-900/50 p-4 rounded-lg">
                 <p class="text-4xl mb-2">✅</p>
                 <p class="text-sm font-semibold text-green-300">Comparación</p>
@@ -351,17 +350,17 @@
                 <p class="text-xs text-gray-400">Análisis cuantitativo</p>
                 <p class="text-xs text-green-400 font-semibold mt-1">✓ 4 modelos</p>
             </div>
-            
+
         </div>
-        
+
         <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3">
             <p class="text-blue-300 text-xs">
-                <strong>📊 Resumen:</strong> Todos los criterios fueron cumplidos. 
-                El modelo logró ROC-AUC=0.79 (5.2% sobre el mínimo), Recall=69% (6% sobre el mínimo), 
+                <strong>📊 Resumen:</strong> Todos los criterios fueron cumplidos.
+                El modelo logró ROC-AUC=0.79 (5.2% sobre el mínimo), Recall=69% (6% sobre el mínimo),
                 y se implementaron 4 modelos competidores con validación cruzada 5-fold.
             </p>
         </div>
-        
+
     </div>
 
 </section>
