@@ -10,8 +10,8 @@
     </h2>
 
     <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-        Exploración exhaustiva del dataset IBM con análisis estadístico descriptivo, 
-        pruebas de significancia y evaluación de multicolinealidad para seleccionar 
+        Exploración exhaustiva del dataset IBM con análisis estadístico descriptivo,
+        pruebas de significancia y evaluación de multicolinealidad para seleccionar
         las <strong>13 variables finales</strong> del modelo.
     </p>
 
@@ -32,7 +32,7 @@
             📁 IBM HR Analytics Employee Attrition & Performance
         </p>
         <p class="text-gray-300 text-xs">
-            Dataset público de Kaggle con información de empleados activos y renunciados. 
+            Dataset público de Kaggle con información de empleados activos y renunciados.
             Variable objetivo: <code class="bg-gray-700 px-2 py-1 rounded text-yellow-400">Attrition</code> (Yes/No).
         </p>
     </div>
@@ -65,7 +65,7 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Análisis descriptivo de las 8 variables numéricas seleccionadas para el modelo. 
+        Análisis descriptivo de las 8 variables numéricas seleccionadas para el modelo.
         Se presentan medidas de tendencia central, dispersión y distribución.
     </p>
 
@@ -85,7 +85,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-700 text-gray-200">
-                
+
                 <tr>
                     <td class="px-3 py-2 font-semibold text-green-400">Age</td>
                     <td class="px-3 py-2 text-center">36.92</td>
@@ -185,10 +185,13 @@
         </h4>
         <ul class="text-gray-300 text-xs space-y-1 list-disc list-inside">
             <li><strong>Age:</strong> Población laboral madura (media=37 años, rango 18-60)</li>
-            <li><strong>DistanceFromHome:</strong> Alta variabilidad (media=9km, std=8km), algunos empleados viajan >20km</li>
-            <li><strong>MonthlyIncome:</strong> Distribución asimétrica (mediana < media), presencia de salarios altos</li>
+            <li><strong>DistanceFromHome:</strong> Alta variabilidad (media=9km, std=8km), algunos empleados viajan
+                >20km</li>
+            <li><strong>MonthlyIncome:</strong> Distribución asimétrica (mediana < media), presencia de salarios
+                    altos</li>
             <li><strong>TotalWorkingYears:</strong> Experiencia moderada (media=11 años), amplio rango (0-40 años)</li>
-            <li><strong>YearsAtCompany:</strong> Antigüedad promedio de 7 años, pero mediana de 5 indica sesgo derecho</li>
+            <li><strong>YearsAtCompany:</strong> Antigüedad promedio de 7 años, pero mediana de 5 indica sesgo derecho
+            </li>
         </ul>
     </div>
 
@@ -205,7 +208,7 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Tablas de frecuencia de las 5 variables categóricas seleccionadas, 
+        Tablas de frecuencia de las 5 variables categóricas seleccionadas,
         incluyendo tasa de rotación (Attrition Rate) por categoría.
     </p>
 
@@ -369,16 +372,15 @@
             ⚖️ Desbalance de clases detectado
         </p>
         <p class="text-gray-300 text-xs">
-            La variable <code class="bg-gray-700 px-1 rounded">Attrition</code> presenta 
-            desbalance 84% (No) vs 16% (Yes). Ratio = 5.2:1. Se aplicará 
+            La variable <code class="bg-gray-700 px-1 rounded">Attrition</code> presenta
+            desbalance 84% (No) vs 16% (Yes). Ratio = 5.2:1. Se aplicará
             <code class="bg-gray-700 px-1 rounded">class_weight='balanced'</code>.
         </p>
     </div>
 
     <!-- Gráfico 1: Distribución de Attrition -->
     <iframe src="fig_sprint1/fig1_attrition_distribution.html"
-        class="w-full h-80 rounded-lg shadow-md my-4 border border-gray-700" 
-        frameborder="0" scrolling="no">
+        class="w-full h-80 rounded-lg shadow-md my-4 border border-gray-700" frameborder="0" scrolling="no">
     </iframe>
 
     <div class="grid md:grid-cols-2 gap-3 mb-4">
@@ -405,105 +407,108 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Se aplicaron pruebas <strong>Chi-cuadrado (χ²)</strong> para evaluar la asociación 
-        entre variables categóricas y <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>. 
-        Criterio: p-value < 0.05 indica asociación significativa.
-    </p>
+        Se aplicaron pruebas <strong>Chi-cuadrado (χ²)</strong> para evaluar la asociación
+        entre variables categóricas y <code class="bg-gray-700 px-1 rounded text-yellow-400">Attrition</code>.
+        Criterio: p-value < 0.05 indica asociación significativa. </p>
 
-    <!-- Resultados Chi-cuadrado -->
-    <div class="space-y-3">
+            <!-- Resultados Chi-cuadrado -->
+            <div class="space-y-3">
 
-        <!-- OverTime -->
-        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-2">
-                <h4 class="text-green-300 font-semibold text-sm">⏰ OverTime vs Attrition</h4>
-                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓ Significativo</span>
-            </div>
-            <div class="grid grid-cols-3 gap-2 text-xs">
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">χ² Statistic</p>
-                    <p class="text-green-400 font-bold">94.65</p>
+                <!-- OverTime -->
+                <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-green-300 font-semibold text-sm">⏰ OverTime vs Attrition</h4>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓
+                            Significativo</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">χ² Statistic</p>
+                            <p class="text-green-400 font-bold">94.65</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">p-value</p>
+                            <p class="text-green-400 font-bold">
+                                < 0.001</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">df</p>
+                            <p class="text-gray-200 font-bold">1</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mt-2">
+                        <strong>Conclusión:</strong> Existe asociación altamente significativa entre
+                        horas extra y rotación (p < 0.001). </p>
                 </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">p-value</p>
-                    <p class="text-green-400 font-bold">< 0.001</p>
-                </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">df</p>
-                    <p class="text-gray-200 font-bold">1</p>
-                </div>
-            </div>
-            <p class="text-gray-300 text-xs mt-2">
-                <strong>Conclusión:</strong> Existe asociación altamente significativa entre 
-                horas extra y rotación (p < 0.001).
-            </p>
-        </div>
 
-        <!-- MaritalStatus -->
-        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-2">
-                <h4 class="text-green-300 font-semibold text-sm">💑 MaritalStatus vs Attrition</h4>
-                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓ Significativo</span>
-            </div>
-            <div class="grid grid-cols-3 gap-2 text-xs">
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">χ² Statistic</p>
-                    <p class="text-green-400 font-bold">45.89</p>
+                <!-- MaritalStatus -->
+                <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-green-300 font-semibold text-sm">💑 MaritalStatus vs Attrition</h4>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓
+                            Significativo</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">χ² Statistic</p>
+                            <p class="text-green-400 font-bold">45.89</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">p-value</p>
+                            <p class="text-green-400 font-bold">
+                                < 0.001</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">df</p>
+                            <p class="text-gray-200 font-bold">2</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mt-2">
+                        <strong>Conclusión:</strong> El estado civil tiene asociación significativa
+                        con rotación (solteros con mayor riesgo).
+                    </p>
                 </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">p-value</p>
-                    <p class="text-green-400 font-bold">< 0.001</p>
-                </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">df</p>
-                    <p class="text-gray-200 font-bold">2</p>
-                </div>
-            </div>
-            <p class="text-gray-300 text-xs mt-2">
-                <strong>Conclusión:</strong> El estado civil tiene asociación significativa 
-                con rotación (solteros con mayor riesgo).
-            </p>
-        </div>
 
-        <!-- JobSatisfaction -->
-        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-2">
-                <h4 class="text-green-300 font-semibold text-sm">😊 JobSatisfaction vs Attrition</h4>
-                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓ Significativo</span>
-            </div>
-            <div class="grid grid-cols-3 gap-2 text-xs">
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">χ² Statistic</p>
-                    <p class="text-green-400 font-bold">28.73</p>
+                <!-- JobSatisfaction -->
+                <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-green-300 font-semibold text-sm">😊 JobSatisfaction vs Attrition</h4>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">✓
+                            Significativo</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">χ² Statistic</p>
+                            <p class="text-green-400 font-bold">28.73</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">p-value</p>
+                            <p class="text-green-400 font-bold">
+                                < 0.001</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-2 rounded">
+                            <p class="text-gray-400 mb-1">df</p>
+                            <p class="text-gray-200 font-bold">3</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-xs mt-2">
+                        <strong>Conclusión:</strong> Satisfacción laboral tiene asociación significativa
+                        con rotación (relación inversa confirmada).
+                    </p>
                 </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">p-value</p>
-                    <p class="text-green-400 font-bold">< 0.001</p>
-                </div>
-                <div class="bg-gray-900/50 p-2 rounded">
-                    <p class="text-gray-400 mb-1">df</p>
-                    <p class="text-gray-200 font-bold">3</p>
-                </div>
-            </div>
-            <p class="text-gray-300 text-xs mt-2">
-                <strong>Conclusión:</strong> Satisfacción laboral tiene asociación significativa 
-                con rotación (relación inversa confirmada).
-            </p>
-        </div>
 
-    </div>
+            </div>
 
-    <!-- Resumen de pruebas -->
-    <div class="bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg p-4 mt-4">
-        <h4 class="text-blue-300 font-semibold text-sm mb-2">
-            ✅ Resumen de Pruebas de Significancia
-        </h4>
-        <p class="text-gray-300 text-xs">
-            <strong>Todas las variables categóricas seleccionadas</strong> (OverTime, MaritalStatus, 
-            JobSatisfaction, EnvironmentSatisfaction, JobRole) presentan asociación estadísticamente 
-            significativa con Attrition (p < 0.05), validando su inclusión en el modelo predictivo.
-        </p>
-    </div>
+            <!-- Resumen de pruebas -->
+            <div class="bg-blue-900/20 border-l-4 border-blue-400 rounded-r-lg p-4 mt-4">
+                <h4 class="text-blue-300 font-semibold text-sm mb-2">
+                    ✅ Resumen de Pruebas de Significancia
+                </h4>
+                <p class="text-gray-300 text-xs">
+                    <strong>Todas las variables categóricas seleccionadas</strong> (OverTime, MaritalStatus,
+                    JobSatisfaction, EnvironmentSatisfaction, JobRole) presentan asociación estadísticamente
+                    significativa con Attrition (p < 0.05), validando su inclusión en el modelo predictivo. </p>
+            </div>
 
 </section>
 
@@ -518,7 +523,7 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Exploración visual de las relaciones entre predictores clave y la variable objetivo, 
+        Exploración visual de las relaciones entre predictores clave y la variable objetivo,
         complementando las pruebas estadísticas formales.
     </p>
 
@@ -530,17 +535,16 @@
             <h4 class="text-lg font-semibold text-green-400 mb-3">
                 2.6.1 Attrition según OverTime
             </h4>
-            
+
             <iframe src="fig_sprint1/fig2_attrition_by_overtime.html"
-                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" 
-                frameborder="0" scrolling="no">
+                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" frameborder="0" scrolling="no">
             </iframe>
-            
+
             <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
                 <p class="text-green-300 text-xs">
-                    <strong>✅ Patrón confirmado (χ²=94.65, p<0.001):</strong> 
-                    Empleados con horas extra tienen tasa de rotación de 30.5% vs 10.4% 
-                    sin horas extra (diferencia de 20.1 puntos porcentuales).
+                    <strong>✅ Patrón confirmado (χ²=94.65, p<0.001):< /strong>
+                            Empleados con horas extra tienen tasa de rotación de 30.5% vs 10.4%
+                            sin horas extra (diferencia de 20.1 puntos porcentuales).
                 </p>
             </div>
         </div>
@@ -550,16 +554,15 @@
             <h4 class="text-lg font-semibold text-green-400 mb-3">
                 2.6.2 Attrition según JobRole
             </h4>
-            
+
             <iframe src="fig_sprint1/fig3_attrition_yes_by_jobrole.html"
-                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" 
-                frameborder="0" scrolling="no">
+                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" frameborder="0" scrolling="no">
             </iframe>
-            
+
             <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3">
                 <p class="text-blue-300 text-xs">
-                    <strong>✅ Roles de alto riesgo identificados:</strong> 
-                    Sales Representatives (57 renuncias) y Lab Technicians (41 renuncias) 
+                    <strong>✅ Roles de alto riesgo identificados:</strong>
+                    Sales Representatives (57 renuncias) y Lab Technicians (41 renuncias)
                     concentran el 41% de la rotación total.
                 </p>
             </div>
@@ -570,17 +573,16 @@
             <h4 class="text-lg font-semibold text-green-400 mb-3">
                 2.6.3 Attrition según MaritalStatus
             </h4>
-            
+
             <iframe src="fig_sprint1/fig4_attrition_by_maritalstatus.html"
-                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" 
-                frameborder="0" scrolling="no">
+                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" frameborder="0" scrolling="no">
             </iframe>
-            
+
             <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-3">
                 <p class="text-purple-300 text-xs">
-                    <strong>✅ Patrón confirmado (χ²=45.89, p<0.001):</strong> 
-                    Solteros presentan 25.5% de rotación vs 12.6% casados 
-                    (2x más riesgo en población soltera).
+                    <strong>✅ Patrón confirmado (χ²=45.89, p<0.001):< /strong>
+                            Solteros presentan 25.5% de rotación vs 12.6% casados
+                            (2x más riesgo en población soltera).
                 </p>
             </div>
         </div>
@@ -590,17 +592,16 @@
             <h4 class="text-lg font-semibold text-green-400 mb-3">
                 2.6.4 Attrition según JobSatisfaction
             </h4>
-            
+
             <iframe src="fig_sprint1/fig5_attrition_by_jobsatisfaction.html"
-                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" 
-                frameborder="0" scrolling="no">
+                class="w-full h-80 rounded-lg shadow-md mb-3 border border-gray-700" frameborder="0" scrolling="no">
             </iframe>
-            
+
             <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
                 <p class="text-red-300 text-xs">
-                    <strong>✅ Relación inversa confirmada (χ²=28.73, p<0.001):</strong> 
-                    Satisfacción nivel 1 (low) = 22.8% rotación vs nivel 4 (very high) = 11.8% 
-                    (reducción de 11 puntos porcentuales).
+                    <strong>✅ Relación inversa confirmada (χ²=28.73, p<0.001):< /strong>
+                            Satisfacción nivel 1 (low) = 22.8% rotación vs nivel 4 (very high) = 11.8%
+                            (reducción de 11 puntos porcentuales).
                 </p>
             </div>
         </div>
@@ -620,14 +621,13 @@
     </h3>
 
     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-        Evaluación de correlaciones (Pearson) entre variables numéricas para detectar 
+        Evaluación de correlaciones (Pearson) entre variables numéricas para detectar
         redundancia. Criterio: |r| > 0.7 indica multicolinealidad problemática.
     </p>
 
     <!-- Gráfico 6: Matriz de correlación -->
     <iframe src="fig_sprint1/fig6_correlation_matrix.html"
-        class="w-full h-96 rounded-lg shadow-md my-4 border border-gray-700" 
-        frameborder="0" scrolling="no">
+        class="w-full h-[900px] rounded-lg shadow-md my-4 border border-gray-700" frameborder="0" scrolling="no">
     </iframe>
 
     <!-- Resultados del análisis -->
@@ -635,9 +635,9 @@
         <h4 class="text-green-300 font-semibold text-sm mb-3">
             🔍 Resultado del Análisis de Multicolinealidad
         </h4>
-        
+
         <div class="grid md:grid-cols-2 gap-4 text-xs mb-4">
-            
+
             <div class="bg-gray-900/50 p-3 rounded-lg">
                 <p class="text-green-400 font-semibold mb-2">✅ Correlaciones moderadas detectadas</p>
                 <ul class="text-gray-300 space-y-1">
@@ -650,19 +650,18 @@
             <div class="bg-gray-900/50 p-3 rounded-lg">
                 <p class="text-green-400 font-semibold mb-2">✅ Decisión tomada</p>
                 <p class="text-gray-300">
-                    Se mantuvieron todas las variables pues aportan información 
-                    complementaria: Age (ciclo de vida) vs TotalWorkingYears (experiencia). 
-                    Correlaciones < 0.8 son aceptables en modelos logísticos.
-                </p>
+                    Se mantuvieron todas las variables pues aportan información
+                    complementaria: Age (ciclo de vida) vs TotalWorkingYears (experiencia).
+                    Correlaciones < 0.8 son aceptables en modelos logísticos. </p>
             </div>
 
         </div>
 
         <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3">
             <p class="text-blue-300 text-xs">
-                <strong>💡 Interpretación:</strong> Aunque existen correlaciones moderadas-altas 
-                (0.68-0.77), ninguna supera el umbral crítico de 0.8. Las variables representan 
-                conceptos distintos: antigüedad vs experiencia vs tiempo con supervisor. 
+                <strong>💡 Interpretación:</strong> Aunque existen correlaciones moderadas-altas
+                (0.68-0.77), ninguna supera el umbral crítico de 0.8. Las variables representan
+                conceptos distintos: antigüedad vs experiencia vs tiempo con supervisor.
                 El modelo logístico es robusto ante correlaciones moderadas.
             </p>
         </div>
@@ -685,11 +684,10 @@
             ✅ Proceso de Feature Selection Completado
         </p>
         <p class="text-gray-300 text-xs">
-            De las 35 variables originales, se seleccionaron <strong>13 variables finales</strong> 
-            (8 numéricas + 5 categóricas) mediante: (1) análisis de significancia estadística 
-            (Chi² p<0.05), (2) evaluación de multicolinealidad (|r|<0.8), (3) relevancia teórica 
-            para recursos humanos.
-        </p>
+            De las 35 variables originales, se seleccionaron <strong>13 variables finales</strong>
+            (8 numéricas + 5 categóricas) mediante: (1) análisis de significancia estadística
+            (Chi² p<0.05), (2) evaluación de multicolinealidad (|r|<0.8), (3) relevancia teórica para recursos humanos.
+                </p>
     </div>
 
     <!-- Variables numéricas (8) -->
@@ -697,9 +695,9 @@
         <h4 class="text-lg font-semibold text-blue-400 mb-3">
             📊 Variables Numéricas (8)
         </h4>
-        
+
         <div class="grid md:grid-cols-2 gap-3 text-xs">
-            
+
             <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
                 <p class="text-green-400 font-semibold mb-1">Age</p>
                 <p class="text-gray-400">Edad del empleado | Media: 36.9 años</p>
@@ -748,9 +746,9 @@
         <h4 class="text-lg font-semibold text-purple-400 mb-3">
             📋 Variables Categóricas (5)
         </h4>
-        
+
         <div class="grid md:grid-cols-2 gap-3 text-xs">
-            
+
             <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3">
                 <p class="text-purple-400 font-semibold mb-1">OverTime</p>
                 <p class="text-gray-400">Horas extra | χ²=94.65, p<0.001 ✓</p>
