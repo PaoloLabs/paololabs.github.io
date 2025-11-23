@@ -1,0 +1,284 @@
+<section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h2 class="text-3xl font-bold text-green-500 mb-5 border-b border-gray-700 pb-3">
+        Sección 5: Conclusiones y Recomendaciones
+    </h2>
+
+</section>
+
+<!-- ============================================ -->
+<!-- HALLAZGOS PRINCIPALES -->
+<!-- ============================================ -->
+<section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-6">
+        Hallazgos Principales
+    </h3>
+    
+    <div class="space-y-4">
+        <div class="bg-green-900/20 border-l-4 border-green-500 p-5 rounded-r-lg">
+            <p class="text-gray-300 leading-relaxed">
+                <strong class="text-green-400">1. Variables Críticas:</strong>
+                Las horas extras (<em>OverTime</em>), el estado civil (<em>MaritalStatus</em>) 
+                y la satisfacción laboral (<em>JobSatisfaction</em>) son los predictores más 
+                significativos de rotación de empleados, validando las hipótesis H₁, H₃ y H₅ 
+                planteadas en la Sección 1.
+            </p>
+        </div>
+
+        <div class="bg-blue-900/20 border-l-4 border-blue-500 p-5 rounded-r-lg">
+            <p class="text-gray-300 leading-relaxed">
+                <strong class="text-blue-400">2. Modelo Ganador:</strong>
+                La Regresión Logística superó a los modelos ensemble (Random Forest, XGBoost, 
+                Gradient Boosting) con <strong>ROC-AUC=0.7906</strong> y <strong>Recall=69%</strong>, 
+                cumpliendo el objetivo SMART de detectar al menos 65% de las renuncias reales mientras 
+                mantiene interpretabilidad para decisiones de negocio.
+            </p>
+        </div>
+
+        <div class="bg-purple-900/20 border-l-4 border-purple-500 p-5 rounded-r-lg">
+            <p class="text-gray-300 leading-relaxed">
+                <strong class="text-purple-400">3. Patrones Identificados:</strong>
+                Empleados solteros que realizan horas extras y tienen baja satisfacción laboral 
+                presentan hasta $3 \times$ más probabilidad de renunciar comparado con empleados 
+                casados sin horas extra y alta satisfacción, confirmando las interacciones 
+                sinérgicas entre factores de riesgo.
+            </p>
+        </div>
+
+        <div class="bg-orange-900/20 border-l-4 border-orange-500 p-5 rounded-r-lg">
+            <p class="text-gray-300 leading-relaxed">
+                <strong class="text-orange-400">4. Roles de Alto Riesgo:</strong>
+                Sales Representatives (57 renuncias, 23.9% de tasa) y Lab Technicians 
+                (41 renuncias, 23.1% de tasa) concentran el <strong>41%</strong> de la rotación 
+                total, requiriendo intervenciones específicas de retención por rol.
+            </p>
+        </div>
+
+        <div class="bg-red-900/20 border-l-4 border-red-500 p-5 rounded-r-lg">
+            <p class="text-gray-300 leading-relaxed">
+                <strong class="text-red-400">5. Interpretabilidad vs Precisión:</strong>
+                Aunque los modelos ensemble lograron mayor Accuracy (81-83%), la Regresión 
+                Logística ofrece el mejor balance entre precisión predictiva e interpretabilidad, 
+                permitiendo cuantificar el impacto de cada variable mediante odds ratios y 
+                facilitar la toma de decisiones en RRHH.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- ============================================ -->
+<!-- LIMITACIONES -->
+<!-- ============================================ -->
+<section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-6">
+        Limitaciones del Estudio
+    </h3>
+
+    <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-6">
+        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-2">
+            <li>
+                <strong>Muestra única:</strong> Dataset limitado a una sola organización (IBM), 
+                lo que puede limitar la generalización a otros sectores, tamaños de empresa 
+                o culturas organizacionales diferentes.
+            </li>
+            <li>
+                <strong>Variables temporales ausentes:</strong> No se consideró estacionalidad 
+                ni tendencias temporales en la rotación (ej: picos de renuncia en ciertos meses 
+                del año, efectos de bonificaciones anuales).
+            </li>
+            <li>
+                <strong>Factores externos no incluidos:</strong> Condiciones del mercado laboral, 
+                ofertas competitivas de otras empresas, o eventos económicos externos no están 
+                contemplados en el modelo.
+            </li>
+            <li>
+                <strong>Desbalance de clases:</strong> El ratio 5.2:1 (No Attrition/Attrition) 
+                fue manejado con <code class="bg-gray-700 px-2 py-1 rounded text-xs">class_weight='balanced'</code>, 
+                pero persiste impacto en Precision (38.3%), generando falsos positivos.
+            </li>
+            <li>
+                <strong>Datos históricos:</strong> La información refleja el estado organizacional 
+                pasado; cambios recientes en políticas de RRHH, liderazgo o cultura organizacional 
+                no están capturados en el dataset.
+            </li>
+            <li>
+                <strong>Variables no observadas:</strong> Factores cualitativos como clima laboral 
+                específico del equipo, calidad de relaciones interpersonales, aspiraciones 
+                profesionales individuales, o situaciones personales no están medidos 
+                cuantitativamente.
+            </li>
+            <li>
+                <strong>Causalidad vs correlación:</strong> El modelo identifica asociaciones 
+                estadísticas pero no establece relaciones causales definitivas. Se requieren 
+                estudios experimentales o longitudinales para confirmar causalidad.
+            </li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- ============================================ -->
+<!-- TRABAJO FUTURO -->
+<!-- ============================================ -->
+<section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl mb-12">
+
+    <h3 class="text-2xl font-semibold text-white mb-6">
+        Trabajo Futuro y Mejoras Propuestas
+    </h3>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Mejoras Técnicas -->
+        <div class="bg-gray-900/50 p-5 rounded-lg">
+            <h4 class="text-lg font-semibold text-blue-400 mb-4">🔬 Mejoras Técnicas</h4>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-2 text-sm">
+                <li>
+                    <strong>Análisis de series temporales:</strong> Incorporar variables 
+                    temporales para capturar estacionalidad y tendencias de rotación.
+                </li>
+                <li>
+                    <strong>Modelos de supervivencia:</strong> Implementar Cox Proportional Hazards 
+                    o Kaplan-Meier para predecir tiempo hasta la renuncia.
+                </li>
+                <li>
+                    <strong>Feature engineering avanzado:</strong> Crear variables de interacción 
+                    (ej: OverTime × JobSatisfaction) y polinomiales.
+                </li>
+                <li>
+                    <strong>Técnicas de ensemble:</strong> Explorar stacking o blending de 
+                    múltiples modelos para mejorar precisión.
+                </li>
+                <li>
+                    <strong>SMOTE o técnicas de oversampling:</strong> Balancear clases de 
+                    forma más sofisticada que class_weight.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Mejoras de Datos -->
+        <div class="bg-gray-900/50 p-5 rounded-lg">
+            <h4 class="text-lg font-semibold text-green-400 mb-4">📊 Mejoras de Datos</h4>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-2 text-sm">
+                <li>
+                    <strong>Datos longitudinales:</strong> Realizar estudios de cohorte 
+                    prospectivos para validación externa del modelo.
+                </li>
+                <li>
+                    <strong>Múltiples organizaciones:</strong> Extender el estudio a diferentes 
+                    sectores y tamaños de empresa para mejorar generalización.
+                </li>
+                <li>
+                    <strong>Variables cualitativas:</strong> Incorporar encuestas de clima 
+                    laboral, evaluaciones 360°, y entrevistas de salida.
+                </li>
+                <li>
+                    <strong>Análisis de texto:</strong> Procesar evaluaciones de desempeño 
+                    y feedback con NLP para extraer sentimientos.
+                </li>
+                <li>
+                    <strong>Datos externos:</strong> Integrar indicadores económicos, tasas 
+                    de desempleo sectorial, y ofertas laborales en el mercado.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Implementación Práctica -->
+        <div class="bg-gray-900/50 p-5 rounded-lg">
+            <h4 class="text-lg font-semibold text-purple-400 mb-4">🚀 Implementación Práctica</h4>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-2 text-sm">
+                <li>
+                    <strong>Dashboard interactivo:</strong> Desarrollar aplicación web con 
+                    Streamlit/Dash para que RRHH visualice riesgos en tiempo real.
+                </li>
+                <li>
+                    <strong>API de predicción:</strong> Crear endpoint REST para integrar el 
+                    modelo en sistemas de RRHH existentes.
+                </li>
+                <li>
+                    <strong>Sistema de alertas:</strong> Notificaciones automáticas cuando 
+                    empleados superen umbral de riesgo (P > 0.6).
+                </li>
+                <li>
+                    <strong>Reentrenamiento periódico:</strong> Pipeline automatizado para 
+                    actualizar el modelo mensual/trimestralmente.
+                </li>
+                <li>
+                    <strong>A/B testing:</strong> Experimentar con intervenciones de retención 
+                    y medir impacto real en rotación.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Extensiones del Análisis -->
+        <div class="bg-gray-900/50 p-5 rounded-lg">
+            <h4 class="text-lg font-semibold text-orange-400 mb-4">📈 Extensiones del Análisis</h4>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-2 text-sm">
+                <li>
+                    <strong>Segmentación de empleados:</strong> Clustering para identificar 
+                    perfiles de riesgo y personalizar intervenciones.
+                </li>
+                <li>
+                    <strong>Análisis de costos:</strong> Cuantificar ROI de retención vs 
+                    costo de reclutamiento y capacitación.
+                </li>
+                <li>
+                    <strong>Network analysis:</strong> Estudiar efecto contagio de renuncias 
+                    en equipos mediante análisis de redes sociales.
+                </li>
+                <li>
+                    <strong>Análisis por cohorte:</strong> Comparar tasas de rotación por 
+                    año de ingreso, generación, y ciclo económico.
+                </li>
+                <li>
+                    <strong>Explicabilidad con SHAP:</strong> Implementar SHAP values para 
+                    explicar predicciones individuales de modelos ensemble.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================ -->
+<!-- CIERRE Y REFLEXIÓN FINAL -->
+<!-- ============================================ -->
+<section class="bg-gradient-to-r from-green-900/30 to-blue-900/30 border border-green-500/30 rounded-lg p-8 text-center mb-12">
+    <h3 class="text-2xl font-bold text-white mb-4">
+        Reflexión Final
+    </h3>
+    <p class="text-lg text-gray-200 leading-relaxed max-w-4xl mx-auto">
+        Este proyecto demuestra el valor del <strong class="text-green-400">machine learning</strong> 
+        en la gestión del talento humano, proporcionando herramientas predictivas que permiten 
+        a las organizaciones tomar decisiones <strong class="text-blue-400">proactivas</strong> 
+        en lugar de reactivas para retener a sus empleados más valiosos. La combinación de 
+        <strong>rigor metodológico</strong>, <strong>interpretabilidad</strong> y 
+        <strong>aplicabilidad práctica</strong> hace de la Regresión Logística una solución 
+        óptima para este problema de negocio.
+    </p>
+    <div class="mt-6 flex justify-center gap-4">
+        <div class="bg-green-700 px-4 py-2 rounded-lg">
+            <p class="text-white font-semibold">ROC-AUC: 0.7906</p>
+        </div>
+        <div class="bg-blue-700 px-4 py-2 rounded-lg">
+            <p class="text-white font-semibold">Recall: 69%</p>
+        </div>
+        <div class="bg-purple-700 px-4 py-2 rounded-lg">
+            <p class="text-white font-semibold">4 Modelos Comparados</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- AGRADECIMIENTOS (OPCIONAL) -->
+<!-- ============================================ -->
+<section class="bg-gray-800 p-6 rounded-lg shadow-xl mb-12 text-center">
+    <p class="text-gray-400 text-sm">
+        Proyecto desarrollado para la materia <strong class="text-green-400">Modelamiento de Datos I</strong><br>
+        Maestría en Inteligencia Artificial y Data Science para la Transformación de Negocios<br>
+        Noviembre 2024
+    </p>
+</section>
