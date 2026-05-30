@@ -1,224 +1,868 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olist Churn Presentation - M13 Grupo 7</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Reveal.js Base Styles -->
+    <title>Olist Churn Sprint 1 – M13 Grupo 7</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        // Configuración de colores personalizados para Tailwind
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandDark: '#020617',
-                        brandBlue: '#3b82f6',
-                        brandGreen: '#10b981',
-                        brandRed: '#ef4444',
-                        brandSurface: 'rgba(255, 255, 255, 0.03)',
-                    },
-                    fontFamily: {
-                        outfit: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
-        .reveal { font-family: 'Outfit', sans-serif !important; background: #020617; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .chart-container { position: relative; height: 350px; width: 100%; max-width: 600px; margin: auto; }
-        h1, h2, h3 { text-transform: none !important; }
+        :root {
+            --accent: #f97316;
+            --accent2: #38bdf8;
+            --green: #4ade80;
+            --red: #f87171;
+            --yellow: #fbbf24;
+            --bg: #09090b;
+            --surface: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        .reveal {
+            font-family: 'DM Sans', sans-serif !important;
+            background: var(--bg);
+            font-size: 24px;
+            /* Aumentado de 18px para mejorar la visibilidad general */
+        }
+
+        .reveal .slides section {
+            text-align: left;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .reveal h1 {
+            font-family: 'Syne', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: 2.8em !important;
+            text-transform: none !important;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin: 0.3em 0 0.2em;
+            color: #fff;
+        }
+
+        .reveal h2 {
+            font-family: 'Syne', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: 2.0em !important;
+            text-transform: none !important;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 0.2em 0 0.1em;
+            color: #fff;
+        }
+
+        .reveal p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.85em;
+            /* Aumentado */
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .tag-o {
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .tag-b {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .tag-g {
+            background: rgba(74, 222, 128, 0.12);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .tag-r {
+            background: rgba(248, 113, 113, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+
+        .tag-y {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .divider {
+            width: 48px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 0.6rem 0 1rem;
+        }
+
+        .divider-b {
+            background: var(--accent2);
+        }
+
+        .divider-g {
+            background: var(--green);
+        }
+
+        .divider-r {
+            background: var(--red);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1em;
+            /* Aumentado */
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        .card-o {
+            border-left: 3px solid var(--accent);
+        }
+
+        .card-b {
+            border-left: 3px solid var(--accent2);
+        }
+
+        .card-g {
+            border-left: 3px solid var(--green);
+        }
+
+        .card-r {
+            border-left: 3px solid var(--red);
+        }
+
+        .card-y {
+            border-left: 3px solid var(--yellow);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .mb {
+            margin-bottom: 0.6rem;
+        }
+
+        .stat-big {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            /* Aumentado */
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 3px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.0em;
+            /* Aumentado */
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        ul li {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        ul li::before {
+            content: '→';
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .ul-b li::before {
+            color: var(--accent2);
+        }
+
+        .ul-g li::before {
+            color: var(--green);
+        }
+
+        .muted {
+            color: rgba(255, 255, 255, 0.28);
+            font-size: 0.8em;
+            /* Aumentado */
+        }
+
+        table.t {
+            width: 100%;
+            font-size: 1.0em;
+            /* Aumentado */
+            border-collapse: collapse;
+        }
+
+        table.t th {
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 400;
+            padding: 4px 6px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        table.t td {
+            padding: 5px 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .val {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 1px 7px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            /* Aumentado */
+        }
+
+        .pill-o {
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
+        }
+
+        .pill-g {
+            background: rgba(74, 222, 128, 0.12);
+            color: #4ade80;
+        }
+
+        .pill-r {
+            background: rgba(248, 113, 113, 0.12);
+            color: #f87171;
+        }
+
+        .pill-b {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+        }
+
+        .pill-y {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+        }
+
+        .hyp {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 0.65rem;
+            align-items: flex-start;
+        }
+
+        .hyp-n {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1em;
+            font-weight: 800;
+            color: var(--accent);
+            min-width: 22px;
+            line-height: 1.2;
+        }
+
+        .hyp-body {
+            font-size: 1.0em;
+            /* Aumentado */
+        }
+
+        .hyp-body strong {
+            color: #fff;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        .hyp-body span {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .badge-ok {
+            color: var(--green);
+            font-size: 0.95em;
+            /* Aumentado */
+        }
+
+        .badge-no {
+            color: var(--red);
+            font-size: 0.95em;
+            /* Aumentado */
+        }
+
+        code {
+            color: var(--accent);
+            font-size: 0.95em;
+            /* Aumentado */
+            background: rgba(249, 115, 22, 0.08);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        img.graf {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
     </style>
 </head>
-<body class="bg-brandDark text-slate-200">
 
+<body>
     <div class="reveal">
         <div class="slides">
 
-            <!-- Diapositiva 1: Hero -->
-            <section data-auto-animate>
-                <div class="glass rounded-3xl p-12 max-w-4xl mx-auto shadow-2xl">
-                    <h1 class="text-6xl font-extrabold mb-4 tracking-tight">Olist: El Desafío del <span class="text-brandRed">97%</span></h1>
-                    <p class="text-xl font-light text-slate-400 uppercase tracking-widest mb-8">Storytelling Estratégico - Sprint 1</p>
-                    <div class="h-1 w-24 bg-brandBlue mx-auto rounded-full mb-8"></div>
-                    <div class="flex justify-center gap-4 text-sm opacity-60">
-                        <span>Ciencia de Datos</span>
-                        <span>•</span>
-                        <span>M13 - Grupo 7</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Diapositiva 2: El Problema -->
             <section>
-                <h2 class="text-4xl font-bold mb-8">La Realidad del "Balde Perforado"</h2>
-                <div class="grid grid-cols-2 gap-8 items-center">
-                    <div class="glass rounded-2xl p-8 text-left">
-                        <p class="text-lg text-slate-300 mb-4 italic">"Capturar clientes es caro; retenerlos es rentable."</p>
-                        <h3 class="text-5xl font-black text-brandRed mb-2">97.0%</h3>
-                        <p class="text-sm text-slate-400 uppercase tracking-tighter">Tasa de Compra Única Detectada</p>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="churnChart"></canvas>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Diapositiva 3: Justificación -->
-            <section>
-                <h2 class="text-4xl font-bold mb-8 italic">Ventana de Oportunidad</h2>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <div class="flex gap-4">
-                        <div class="glass flex-1 p-6 rounded-2xl border-l-4 border-brandGreen">
-                            <span class="block text-3xl font-bold">29 Días</span>
-                            <span class="text-xs text-slate-400">Mediana de retorno</span>
+                <div style="padding-top:0.6rem">
+                    <div class="tag tag-o">Sprint 1 · M13 Grupo 7</div>
+                    <h1>Análisis de <span style="color:var(--accent)">Churn</span> en Olist</h1>
+                    <div class="divider"></div>
+                    <p style="font-size:1.0em; max-width:480px">Formulación del problema de negocio, EDA inicial,
+                        hipótesis, variables y métricas base para predicción de abandono de clientes.</p>
+                    <div class="grid-3" style="margin-top:1.2rem; max-width:460px">
+                        <div class="card" style="text-align:center">
+                            <div class="stat-big" style="font-size:1.6em; color:var(--accent)">99K</div>
+                            <div class="stat-label">órdenes totales</div>
                         </div>
-                        <div class="glass flex-1 p-6 rounded-2xl border-l-4 border-brandBlue">
-                            <span class="block text-3xl font-bold">240 Días</span>
-                            <span class="text-xs text-slate-400">Percentil 90 (P90)</span>
+                        <div class="card" style="text-align:center">
+                            <div class="stat-big" style="font-size:1.6em; color:var(--accent2)">93K</div>
+                            <div class="stat-label">clientes únicos</div>
+                        </div>
+                        <div class="card" style="text-align:center">
+                            <div class="stat-big" style="font-size:1.1em; color:var(--green)">2016–18</div>
+                            <div class="stat-label">período dataset</div>
                         </div>
                     </div>
-                    <div class="bg-brandRed/20 border border-brandRed/40 p-8 rounded-3xl">
-                        <h4 class="text-2xl font-bold text-brandRed mb-2">Umbral de Churn: 180 Días</h4>
-                        <p class="text-sm text-slate-300">Justificación: Equilibrio entre el ciclo de bienes duraderos y el abandono operativo.</p>
+                    <p class="muted" style="margin-top:1.4rem">Maestría en Ciencia de Datos · Olist Brazilian E-Commerce
+                        Dataset</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="tag tag-o">01 · Definición del Problema</div>
+                <h2>¿Qué problema resolvemos?</h2>
+                <div class="divider"></div>
+                <div class="grid-2">
+                    <div>
+                        <div class="card card-r mb">
+                            <div class="tag tag-r" style="margin-bottom:0.3rem">Situación actual</div><br>
+                            La gran mayoría de clientes <strong style="color:#fff">compra una sola vez y no
+                                regresa</strong>. Olist invierte en adquisición pero pierde valor en retención.
+                        </div>
+                        <div class="card card-o mb">
+                            <div class="tag tag-o" style="margin-bottom:0.3rem">Objetivo del MVP</div><br>
+                            Modelo de <strong style="color:#fff">clasificación binaria</strong> que prediga mensualmente
+                            qué clientes tienen riesgo de abandono para habilitar retención dirigida.
+                        </div>
+                        <div class="card card-g">
+                            <div class="tag tag-g" style="margin-bottom:0.3rem">Impacto esperado</div><br>
+                            Reducir churn mediante campañas de reactivación, mejorando el <strong
+                                style="color:#fff">CLV</strong> y el ROI en marketing.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card mb" style="padding:0.9rem">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">PREGUNTA
+                                CENTRAL</div>
+                            <span style="font-size:1.0em; color:#fff; font-style:italic; line-height:1.5">"¿Qué
+                                características predicen si un cliente volverá a comprar en los próximos 180
+                                días?"</span>
+                        </div>
+                        <div class="card card-b">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">ALCANCE
+                                SPRINT 1</div>
+                            <ul class="ul-b">
+                                <li>Definir y justificar el target <code>is_churn</code></li>
+                                <li>EDA: distribuciones, correlaciones, outliers</li>
+                                <li>Selección de variables candidatas (ABT)</li>
+                                <li>Baseline de métricas técnicas y de negocio</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Diapositiva 4: Hallazgos -->
             <section>
-                <h2 class="text-4xl font-bold mb-12 italic tracking-tighter">Drivers de Abandono</h2>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="glass p-6 rounded-2xl">
-                        <h4 class="text-sm font-semibold mb-4 text-brandBlue uppercase">Satisfacción</h4>
-                        <canvas id="satChart" style="height: 200px;"></canvas>
-                        <p class="mt-4 text-xs">Score promedio: <span class="text-brandRed">4.12</span> vs <span class="text-brandGreen">4.20</span></p>
+                <div class="tag tag-r">02 · Hallazgo Principal</div>
+                <h2>Olist es una plataforma transaccional</h2>
+                <div class="divider divider-r"></div>
+                <div class="grid-2">
+                    <div>
+                        <div style="margin-bottom:0.9rem">
+                            <div class="stat-big" style="font-size:3em; color:var(--red)">97%</div>
+                            <div style="font-size:0.95em; color:rgba(255,255,255,0.45); margin-top:3px">compra <strong
+                                    style="color:#fff">una sola vez</strong> y no regresa</div>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:0.7rem">
+                            <div class="card" style="text-align:center">
+                                <div class="stat-big" style="font-size:1.4em; color:var(--yellow)">2.76%</div>
+                                <div class="stat-label">2 compras</div>
+                            </div>
+                            <div class="card" style="text-align:center">
+                                <div class="stat-big" style="font-size:1.4em; color:var(--accent2)">0.19%</div>
+                                <div class="stat-label">3 compras</div>
+                            </div>
+                        </div>
+                        <div class="card card-o">
+                            <strong style="color:#fff">Implicancia:</strong> clase extremadamente desbalanceada. Debemos
+                            priorizar <strong style="color:var(--accent)">Recall y AUC-ROC</strong> sobre accuracy
+                            simple.
+                        </div>
                     </div>
-                    <div class="glass p-6 rounded-2xl">
-                        <h4 class="text-sm font-semibold mb-4 text-brandBlue uppercase">Eficiencia Logística</h4>
-                        <canvas id="logChart" style="height: 200px;"></canvas>
-                        <p class="mt-4 text-xs">El retraso en la entrega castiga la recurrencia.</p>
+                    <img class="graf" src="img/frecuencia_compra.png">
+                </div>
+            </section>
+
+            <section>
+                <div class="tag tag-o">03 · Variable Target</div>
+                <h2>Cómo definimos <code>is_churn</code></h2>
+                <div class="divider"></div>
+                <div class="grid-2">
+                    <div>
+                        <div class="card card-o mb">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.3rem">REGLA DE
+                                NEGOCIO</div>
+                            <span style="color:#fff; font-size:1.0em"><code>is_churn = 1</code> si el cliente
+                                <strong>no realizó ninguna compra en los 180 días</strong> posteriores a su última
+                                orden.</span>
+                        </div>
+                        <div class="card mb">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">TABLA DE
+                                SENSIBILIDAD</div>
+                            <table class="t">
+                                <thead>
+                                    <tr>
+                                        <th>Umbral</th>
+                                        <th>% Churn</th>
+                                        <th># Clientes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>90 días</td>
+                                        <td><span class="val" style="color:var(--red)">80.2%</span></td>
+                                        <td>74,899</td>
+                                    </tr>
+                                    <tr>
+                                        <td>120 días</td>
+                                        <td><span class="val" style="color:var(--yellow)">73.3%</span></td>
+                                        <td>68,438</td>
+                                    </tr>
+                                    <tr>
+                                        <td>150 días</td>
+                                        <td><span class="val" style="color:var(--yellow)">66.2%</span></td>
+                                        <td>61,761</td>
+                                    </tr>
+                                    <tr style="background:rgba(249,115,22,0.1)">
+                                        <td><strong style="color:var(--accent)">180 días ←</strong></td>
+                                        <td><span class="val" style="color:var(--accent)">59.2%</span></td>
+                                        <td>55,252</td>
+                                    </tr>
+                                    <tr>
+                                        <td>240 días</td>
+                                        <td><span class="val" style="color:var(--green)">44.7%</span></td>
+                                        <td>41,766</td>
+                                    </tr>
+                                    <tr>
+                                        <td>365 días</td>
+                                        <td><span class="val" style="color:var(--green)">22.2%</span></td>
+                                        <td>20,738</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card card-g" style="font-size:0.95em">180 días equilibra sensibilidad y
+                            especificidad. Captura el ciclo natural sin penalizar categorías de recompra larga.</div>
+                    </div>
+                    <img class="graf" src="img/curva_sensibilidad.png">
+                </div>
+            </section>
+
+            <section>
+                <div class="tag tag-b">04 · Hipótesis</div>
+                <h2>¿Qué impulsa el abandono?</h2>
+                <div class="divider divider-b"></div>
+                <div class="grid-2">
+                    <div>
+                        <div class="hyp">
+                            <div class="hyp-n">H1</div>
+                            <div class="hyp-body">
+                                <strong>Satisfacción baja → mayor churn <span class="badge-ok">✓
+                                        Confirmada</span></strong>
+                                <span>Churn: 4.12 vs No-Churn: 4.20 en review score. Diferencia pequeña pero relevante
+                                    con n=93K.</span>
+                            </div>
+                        </div>
+                        <div class="hyp">
+                            <div class="hyp-n">H2</div>
+                            <div class="hyp-body">
+                                <strong>Retraso logístico → abandono <span class="badge-no">✗ No
+                                        confirmada</span></strong>
+                                <span>Ambos grupos reciben pedidos anticipados. Diferencia de solo 0.33 días — no es
+                                    driver significativo.</span>
+                            </div>
+                        </div>
+                        <div class="hyp">
+                            <div class="hyp-n">H3</div>
+                            <div class="hyp-body">
+                                <strong>Recencia domina la predicción <span class="badge-ok">✓
+                                        Confirmada</span></strong>
+                                <span>Correlación r=+0.794 con el target. Predictor dominante por amplio margen.</span>
+                            </div>
+                        </div>
+                        <div class="hyp">
+                            <div class="hyp-n">H4</div>
+                            <div class="hyp-body">
+                                <strong>Multicolinealidad monetaria <span class="badge-ok">✓ Detectada</span></strong>
+                                <span>Gasto Total ↔ Ticket Promedio: r=0.983. Se eliminará una variable en Sprint
+                                    2.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img class="graf mb" src="img/review_score_boxplot.png">
+                        <div class="card card-y" style="font-size:0.95em">
+                            <strong style="color:var(--yellow)">Nota:</strong> H2 no confirmada es un hallazgo válido.
+                            El problema de churn en Olist no es logístico — es de <strong style="color:#fff">experiencia
+                                y recencia</strong>.
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Diapositiva 5: La ABT -->
             <section>
-                <h2 class="text-4xl font-bold mb-8">Producto: ABT Consolidada</h2>
-                <div class="glass overflow-hidden rounded-2xl shadow-xl">
-                    <table class="w-full text-left">
-                        <thead class="bg-white/5">
-                            <tr class="text-brandBlue text-xs uppercase tracking-widest">
-                                <th class="p-4">Variable</th>
-                                <th class="p-4">Interpretación</th>
-                                <th class="p-4">Rol</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                            <tr class="border-t border-white/5">
-                                <td class="p-4 font-bold">Recencia</td>
-                                <td class="p-4">Días desde última actividad</td>
-                                <td class="p-4 text-brandRed">TARGET</td>
-                            </tr>
-                            <tr class="border-t border-white/5">
-                                <td class="p-4 font-bold">LTV</td>
-                                <td class="p-4">Gasto total acumulado</td>
-                                <td class="p-4">Monetario</td>
-                            </tr>
-                            <tr class="border-t border-white/5">
-                                <td class="p-4 font-bold">Score</td>
-                                <td class="p-4">Sentimiento del cliente</td>
-                                <td class="p-4 text-brandGreen">Feature</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="tag tag-b">05 · EDA — Correlaciones</div>
+                <h2>Estructura de señal del dataset</h2>
+                <div class="divider divider-b"></div>
+                <div class="grid-2">
+                    <div>
+                        <img class="graf" src="img/heatmap_correlacion.png">
+                    </div>
+                    <div>
+                        <div class="card card-o mb">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">
+                                CORRELACIÓN CON TARGET is_churn</div>
+                            <table class="t">
+                                <thead>
+                                    <tr>
+                                        <th>Variable</th>
+                                        <th>r</th>
+                                        <th>Señal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Recencia</td>
+                                        <td><span class="val" style="color:var(--green)">+0.794</span></td>
+                                        <td><span class="pill pill-g">dominante</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Review Score</td>
+                                        <td><span class="val" style="color:var(--red)">-0.027</span></td>
+                                        <td><span class="pill pill-y">débil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delay Entrega</td>
+                                        <td><span class="val" style="color:var(--red)">-0.016</span></td>
+                                        <td><span class="pill pill-y">débil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Frecuencia</td>
+                                        <td><span class="val" style="color:var(--red)">-0.016</span></td>
+                                        <td><span class="pill pill-y">débil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gasto Total</td>
+                                        <td><span class="val" style="color:var(--red)">-0.015</span></td>
+                                        <td><span class="pill pill-y">débil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ticket Prom.</td>
+                                        <td><span class="val" style="color:var(--red)">-0.013</span></td>
+                                        <td><span class="pill pill-y">débil</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card card-b" style="font-size:0.95em">
+                            <strong style="color:#fff">Implicancia para ML:</strong> Recencia domina la señal lineal.
+                            Modelos de árbol (XGBoost, Random Forest) capturarán interacciones no lineales entre las
+                            variables débiles.
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Diapositiva 6: Cierre -->
             <section>
-                <div class="glass p-12 rounded-[3rem] inline-block shadow-2xl">
-                    <h2 class="text-5xl font-extrabold mb-4 tracking-tighter italic">¿Próximo Paso?</h2>
-                    <p class="text-xl text-brandBlue font-bold">Modelado Predictivo (Sprint 2)</p>
-                    <p class="mt-8 text-sm opacity-40">M13 Grupo 7 • Maestría en Ciencia de Datos</p>
+                <div class="tag tag-b">06 · ABT Construida</div>
+                <h2>Analytical Base Table</h2>
+                <div class="divider divider-b"></div>
+                <div class="grid-2">
+                    <div>
+                        <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.5rem">7 VARIABLES ·
+                            93,358 CLIENTES ÚNICOS</div>
+                        <table class="t">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Tipo</th>
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>recencia</code></td>
+                                    <td><span class="pill pill-r">num</span></td>
+                                    <td>Base del label</td>
+                                </tr>
+                                <tr>
+                                    <td><code>is_churn</code></td>
+                                    <td><span class="pill pill-o">target</span></td>
+                                    <td>Variable objetivo</td>
+                                </tr>
+                                <tr>
+                                    <td><code>total_orders</code></td>
+                                    <td><span class="pill pill-b">num</span></td>
+                                    <td>Frecuencia RFM</td>
+                                </tr>
+                                <tr>
+                                    <td><code>gasto_total</code></td>
+                                    <td><span class="pill pill-b">num</span></td>
+                                    <td>Valor monetario</td>
+                                </tr>
+                                <tr>
+                                    <td><code>ticket_promedio</code></td>
+                                    <td><span class="pill pill-y">⚠ revisar</span></td>
+                                    <td>r=0.983 con gasto</td>
+                                </tr>
+                                <tr>
+                                    <td><code>review_score</code></td>
+                                    <td><span class="pill pill-b">num</span></td>
+                                    <td>Satisfacción</td>
+                                </tr>
+                                <tr>
+                                    <td><code>delivery_delay</code></td>
+                                    <td><span class="pill pill-b">num</span></td>
+                                    <td>Logística</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="card card-y" style="margin-top:0.6rem; font-size:0.95em">
+                            <strong style="color:var(--yellow)">Sprint 2:</strong> Eliminar <code>ticket_promedio</code>
+                            por multicolinealidad. Agregar <code>estado_uf</code> y <code>product_category</code>.
+                        </div>
+                    </div>
+                    <div>
+                        <img class="graf mb" src="img/ticket_promedio_dist.png">
+                        <div class="card card-g">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">INSIGHT
+                                MONETARIO</div>
+                            <div style="display:flex; gap:1.2rem; align-items:flex-end">
+                                <div>
+                                    <div class="stat-big" style="font-size:1.3em; color:var(--green)">R$ 106</div>
+                                    <div class="stat-label">mediana ticket</div>
+                                </div>
+                                <div>
+                                    <div class="stat-big" style="font-size:1.3em; color:var(--yellow)">R$ 160</div>
+                                    <div class="stat-label">media (outliers)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section>
+                <div class="tag tag-g">07 · Baseline de Métricas</div>
+                <h2>Punto de partida para el modelo</h2>
+                <div class="divider divider-g"></div>
+                <div class="grid-2">
+                    <div>
+                        <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.5rem">MÉTRICAS
+                            TÉCNICAS — Dummy Classifier</div>
+                        <table class="t">
+                            <thead>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Baseline</th>
+                                    <th>Meta Sprint 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Accuracy</td>
+                                    <td><span class="val" style="color:var(--yellow)">59.2%</span></td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>Recall (Churn)</td>
+                                    <td><span class="val" style="color:var(--red)">0.00</span></td>
+                                    <td><span class="val" style="color:var(--green)">&gt; 0.65</span></td>
+                                </tr>
+                                <tr>
+                                    <td>F1-Score</td>
+                                    <td><span class="val" style="color:var(--red)">0.00</span></td>
+                                    <td><span class="val" style="color:var(--green)">&gt; 0.60</span></td>
+                                </tr>
+                                <tr>
+                                    <td>AUC-ROC</td>
+                                    <td><span class="val" style="color:var(--red)">0.50</span></td>
+                                    <td><span class="val" style="color:var(--green)">&gt; 0.75</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Gini</td>
+                                    <td><span class="val" style="color:var(--red)">0.00</span></td>
+                                    <td><span class="val" style="color:var(--green)">&gt; 0.50</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="muted" style="margin-top:0.4rem">* Predice siempre clase mayoritaria. Accuracy 59% es
+                            engañoso con clases desbalanceadas.</p>
+                    </div>
+                    <div>
+                        <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.5rem">MÉTRICAS DE
+                            NEGOCIO — Estado actual</div>
+                        <table class="t" style="margin-bottom:0.6rem">
+                            <thead>
+                                <tr>
+                                    <th>KPI</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tasa de churn (180d)</td>
+                                    <td><span class="val" style="color:var(--red)">59.2%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Tasa de retención</td>
+                                    <td><span class="val" style="color:var(--green)">40.8%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Review score — Churn</td>
+                                    <td><span class="val" style="color:var(--red)">4.12 / 5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Review score — Retenido</td>
+                                    <td><span class="val" style="color:var(--green)">4.20 / 5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Ticket mediano global</td>
+                                    <td><span class="val" style="color:var(--accent2)">R$ 105.63</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Clientes en churn</td>
+                                    <td><span class="val" style="color:var(--red)">55,252</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="card card-g" style="font-size:0.95em">
+                            <strong style="color:#fff">Impacto potencial:</strong> Recuperar 5% de churners (~2,760
+                            clientes) × R$106 = <strong style="color:var(--green)">~R$292K adicionales</strong> por
+                            ciclo mensual.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="tag tag-g">08 · Cierre Sprint 1</div>
+                <h2>Entregables y próximos pasos</h2>
+                <div class="divider divider-g"></div>
+                <div class="grid-2">
+                    <div>
+                        <div class="card card-g mb">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">✓
+                                ENTREGABLES SPRINT 1</div>
+                            <ul class="ul-g">
+                                <li>Problema definido: predicción de churn mensual con umbral 180 días</li>
+                                <li>4 hipótesis: 3 confirmadas, 1 rechazada con evidencia</li>
+                                <li>EDA completo: recurrencia, monetario, satisfacción, logística, correlaciones</li>
+                                <li>ABT: 93,358 clientes, 7 variables, nulos imputados</li>
+                                <li>Baseline técnico y KPIs de negocio establecidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card card-b mb">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.35); margin-bottom:0.4rem">→ SPRINT
+                                2: PIPELINE E INGENIERÍA</div>
+                            <ul class="ul-b">
+                                <li>Resolver multicolinealidad: eliminar <code>ticket_promedio</code></li>
+                                <li>Agregar <code>estado_uf</code> y <code>product_category</code> con encoding</li>
+                                <li>Normalización y tratamiento de outliers</li>
+                                <li>Pipeline reproducible con <code>sklearn.Pipeline</code></li>
+                                <li>Simulación de entrada de datos mensual</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="text-align:center; padding:1rem">
+                            <div style="font-size:0.8em; color:rgba(255,255,255,0.3); margin-bottom:0.3rem">META
+                                TÉCNICA SPRINT 3</div>
+                            <div class="stat-big" style="font-size:1.8em; color:var(--accent)">Recall &gt; 0.65</div>
+                            <div class="stat-label">sobre clase churn</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="muted" style="margin-top:0.8rem; text-align:center">Maestría en Ciencia de Datos · M13 Grupo 7
+                    · Olist Brazilian E-Commerce Dataset</p>
             </section>
 
         </div>
     </div>
-
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
     <script>
         Reveal.initialize({
             hash: true,
-            center: true,
-            transition: 'slide',
-            backgroundTransition: 'fade'
-        });
-
-        // Configuración base de gráficos
-        Chart.defaults.color = '#94a3b8';
-        Chart.defaults.font.family = 'Outfit';
-
-        // Gráfico 1: Churn Pie
-        new Chart(document.getElementById('churnChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Churn', 'Fieles'],
-                datasets: [{
-                    data: [97, 3],
-                    backgroundColor: ['#ef4444', '#10b981'],
-                    borderWidth: 0
-                }]
-            },
-            options: { cutout: '70%', plugins: { legend: { position: 'bottom' } } }
-        });
-
-        // Gráfico 2: Satisfacción
-        new Chart(document.getElementById('satChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Activos', 'Churn'],
-                datasets: [{
-                    label: 'Score',
-                    data: [4.20, 4.12],
-                    backgroundColor: ['#10b981', '#ef4444'],
-                    borderRadius: 8
-                }]
-            },
-            options: { scales: { y: { min: 4, grid: { display: false } } } }
-        });
-
-        // Gráfico 3: Logística
-        new Chart(document.getElementById('logChart'), {
-            type: 'line',
-            data: {
-                labels: ['S1', 'S2', 'S3', 'S4'],
-                datasets: [{
-                    label: 'Delay Promedio',
-                    data: [12, 19, 15, 25],
-                    borderColor: '#3b82f6',
-                    tension: 0.4,
-                    fill: true,
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)'
-                }]
-            }
+            center: false,
+            transition: 'fade',
+            backgroundTransition: 'fade',
+            width: 1280,
+            height: 720,
+            margin: 0.06,
+            minScale: 0.1,
+            maxScale: 2.0
         });
     </script>
 </body>
+
 </html>
