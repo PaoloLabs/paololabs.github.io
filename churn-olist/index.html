@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olist Churn Presentation - M13 Grupo 7</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Reveal.js Base Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Configuración de colores personalizados para Tailwind
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#020617',
+                        brandBlue: '#3b82f6',
+                        brandGreen: '#10b981',
+                        brandRed: '#ef4444',
+                        brandSurface: 'rgba(255, 255, 255, 0.03)',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal { font-family: 'Outfit', sans-serif !important; background: #020617; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .chart-container { position: relative; height: 350px; width: 100%; max-width: 600px; margin: auto; }
+        h1, h2, h3 { text-transform: none !important; }
+    </style>
+</head>
+<body class="bg-brandDark text-slate-200">
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Diapositiva 1: Hero -->
+            <section data-auto-animate>
+                <div class="glass rounded-3xl p-12 max-w-4xl mx-auto shadow-2xl">
+                    <h1 class="text-6xl font-extrabold mb-4 tracking-tight">Olist: El Desafío del <span class="text-brandRed">97%</span></h1>
+                    <p class="text-xl font-light text-slate-400 uppercase tracking-widest mb-8">Storytelling Estratégico - Sprint 1</p>
+                    <div class="h-1 w-24 bg-brandBlue mx-auto rounded-full mb-8"></div>
+                    <div class="flex justify-center gap-4 text-sm opacity-60">
+                        <span>Ciencia de Datos</span>
+                        <span>•</span>
+                        <span>M13 - Grupo 7</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 2: El Problema -->
+            <section>
+                <h2 class="text-4xl font-bold mb-8">La Realidad del "Balde Perforado"</h2>
+                <div class="grid grid-cols-2 gap-8 items-center">
+                    <div class="glass rounded-2xl p-8 text-left">
+                        <p class="text-lg text-slate-300 mb-4 italic">"Capturar clientes es caro; retenerlos es rentable."</p>
+                        <h3 class="text-5xl font-black text-brandRed mb-2">97.0%</h3>
+                        <p class="text-sm text-slate-400 uppercase tracking-tighter">Tasa de Compra Única Detectada</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="churnChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 3: Justificación -->
+            <section>
+                <h2 class="text-4xl font-bold mb-8 italic">Ventana de Oportunidad</h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="flex gap-4">
+                        <div class="glass flex-1 p-6 rounded-2xl border-l-4 border-brandGreen">
+                            <span class="block text-3xl font-bold">29 Días</span>
+                            <span class="text-xs text-slate-400">Mediana de retorno</span>
+                        </div>
+                        <div class="glass flex-1 p-6 rounded-2xl border-l-4 border-brandBlue">
+                            <span class="block text-3xl font-bold">240 Días</span>
+                            <span class="text-xs text-slate-400">Percentil 90 (P90)</span>
+                        </div>
+                    </div>
+                    <div class="bg-brandRed/20 border border-brandRed/40 p-8 rounded-3xl">
+                        <h4 class="text-2xl font-bold text-brandRed mb-2">Umbral de Churn: 180 Días</h4>
+                        <p class="text-sm text-slate-300">Justificación: Equilibrio entre el ciclo de bienes duraderos y el abandono operativo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 4: Hallazgos -->
+            <section>
+                <h2 class="text-4xl font-bold mb-12 italic tracking-tighter">Drivers de Abandono</h2>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass p-6 rounded-2xl">
+                        <h4 class="text-sm font-semibold mb-4 text-brandBlue uppercase">Satisfacción</h4>
+                        <canvas id="satChart" style="height: 200px;"></canvas>
+                        <p class="mt-4 text-xs">Score promedio: <span class="text-brandRed">4.12</span> vs <span class="text-brandGreen">4.20</span></p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl">
+                        <h4 class="text-sm font-semibold mb-4 text-brandBlue uppercase">Eficiencia Logística</h4>
+                        <canvas id="logChart" style="height: 200px;"></canvas>
+                        <p class="mt-4 text-xs">El retraso en la entrega castiga la recurrencia.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 5: La ABT -->
+            <section>
+                <h2 class="text-4xl font-bold mb-8">Producto: ABT Consolidada</h2>
+                <div class="glass overflow-hidden rounded-2xl shadow-xl">
+                    <table class="w-full text-left">
+                        <thead class="bg-white/5">
+                            <tr class="text-brandBlue text-xs uppercase tracking-widest">
+                                <th class="p-4">Variable</th>
+                                <th class="p-4">Interpretación</th>
+                                <th class="p-4">Rol</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-t border-white/5">
+                                <td class="p-4 font-bold">Recencia</td>
+                                <td class="p-4">Días desde última actividad</td>
+                                <td class="p-4 text-brandRed">TARGET</td>
+                            </tr>
+                            <tr class="border-t border-white/5">
+                                <td class="p-4 font-bold">LTV</td>
+                                <td class="p-4">Gasto total acumulado</td>
+                                <td class="p-4">Monetario</td>
+                            </tr>
+                            <tr class="border-t border-white/5">
+                                <td class="p-4 font-bold">Score</td>
+                                <td class="p-4">Sentimiento del cliente</td>
+                                <td class="p-4 text-brandGreen">Feature</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Diapositiva 6: Cierre -->
+            <section>
+                <div class="glass p-12 rounded-[3rem] inline-block shadow-2xl">
+                    <h2 class="text-5xl font-extrabold mb-4 tracking-tighter italic">¿Próximo Paso?</h2>
+                    <p class="text-xl text-brandBlue font-bold">Modelado Predictivo (Sprint 2)</p>
+                    <p class="mt-8 text-sm opacity-40">M13 Grupo 7 • Maestría en Ciencia de Datos</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            center: true,
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+
+        // Configuración base de gráficos
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Outfit';
+
+        // Gráfico 1: Churn Pie
+        new Chart(document.getElementById('churnChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Churn', 'Fieles'],
+                datasets: [{
+                    data: [97, 3],
+                    backgroundColor: ['#ef4444', '#10b981'],
+                    borderWidth: 0
+                }]
+            },
+            options: { cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Gráfico 2: Satisfacción
+        new Chart(document.getElementById('satChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Activos', 'Churn'],
+                datasets: [{
+                    label: 'Score',
+                    data: [4.20, 4.12],
+                    backgroundColor: ['#10b981', '#ef4444'],
+                    borderRadius: 8
+                }]
+            },
+            options: { scales: { y: { min: 4, grid: { display: false } } } }
+        });
+
+        // Gráfico 3: Logística
+        new Chart(document.getElementById('logChart'), {
+            type: 'line',
+            data: {
+                labels: ['S1', 'S2', 'S3', 'S4'],
+                datasets: [{
+                    label: 'Delay Promedio',
+                    data: [12, 19, 15, 25],
+                    borderColor: '#3b82f6',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
